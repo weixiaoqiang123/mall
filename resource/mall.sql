@@ -210,3 +210,53 @@ CREATE TABLE oms_order_detail(
     PRIMARY KEY (id)
 )  COMMENT = '订单详情表';
 
+DROP TABLE IF EXISTS cms_menu_button_dic;
+CREATE TABLE cms_menu_button_dic(
+    `id` INT(8) NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
+    `menu_id` VARCHAR(8) NOT NULL   COMMENT '叶子菜单ID' ,
+    `button_id` VARCHAR(30) NOT NULL   COMMENT '按钮ID 当前菜单无法重复' ,
+    `button_name` VARCHAR(20) NOT NULL   COMMENT '菜单名称' ,
+    `button_type` VARCHAR(10) NOT NULL   COMMENT '菜单类型: add|update|delete|view' ,
+    PRIMARY KEY (id)
+)  COMMENT = '菜单按钮字典';
+
+DROP TABLE IF EXISTS cms_menu;
+CREATE TABLE cms_menu(
+     `id` INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
+     `menu_code` VARCHAR(8)    COMMENT '菜单编码 8位UUID' ,
+     `menu_name` VARCHAR(20)    COMMENT '菜单名称' ,
+     `parent_menu_code` VARCHAR(8)    COMMENT '父级菜单编码' ,
+     `level` INT(255)    COMMENT '菜单级别' ,
+     `order` INT(255)   DEFAULT 0 COMMENT '菜单顺序' ,
+     `is_leaf` INT    COMMENT '是否是叶子菜单: 0 目录 1 页面' ,
+     `url` VARCHAR(100)    COMMENT '菜单地址 仅叶子菜单有' ,
+     PRIMARY KEY (id)
+)  COMMENT = '菜单表';
+
+
+DROP TABLE IF EXISTS cms_role;
+CREATE TABLE cms_role(
+     `id` INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
+     `role_id` VARCHAR(8)    COMMENT '角色ID' ,
+     `role_name` VARCHAR(20)    COMMENT '角色名称' ,
+     `role_desc` VARCHAR(100)    COMMENT '角色描述' ,
+     PRIMARY KEY (id)
+)  COMMENT = '角色表';
+
+DROP TABLE IF EXISTS cms_menu_role_map;
+CREATE TABLE cms_menu_role_map(
+  `id` INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
+  `menu_id` VARCHAR(8) NOT NULL   COMMENT '菜单ID' ,
+  `role_id` VARCHAR(8) NOT NULL   COMMENT '角色ID' ,
+  PRIMARY KEY (id)
+)  COMMENT = '菜单角色关系表';
+
+DROP TABLE IF EXISTS cms_admin_role_map;
+CREATE TABLE cms_admin_role_map(
+   `id` INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
+   `user_id` INT(255)    COMMENT '用户表主键' ,
+   `role_id` VARCHAR(8)    COMMENT '角色ID' ,
+   PRIMARY KEY (id)
+)  COMMENT = '用户角色关系表';
+
+
