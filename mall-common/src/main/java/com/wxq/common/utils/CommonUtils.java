@@ -1,4 +1,4 @@
-package com.wxq.core.utils;
+package com.wxq.common.utils;
 
 /**
  * @author weixiaoqiang
