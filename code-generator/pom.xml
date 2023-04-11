@@ -44,7 +44,7 @@
 
         <dependency>
             <groupId>com.wxq.mall</groupId>
-            <artifactId>mall-core</artifactId>
+            <artifactId>mall-common</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

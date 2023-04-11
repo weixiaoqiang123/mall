@@ -2,8 +2,8 @@ package com.wxq.generator.core;
 
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
-import com.wxq.core.model.ResultBody;
-import com.wxq.core.utils.CommonUtils;
+import com.wxq.common.model.ResultBody;
+import com.wxq.common.utils.CommonUtils;
 import java.util.Collections;
 import java.util.Map;
 
@@ -48,7 +48,7 @@ public class BaseGenerator {
                 .service("service")
                 .serviceImpl("service.impl")
                 .mapper("mapper")
-                .xml("mapper.xml")
+                .xml("xml")
                 .controller("controller");
     }
 

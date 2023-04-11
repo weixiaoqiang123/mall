@@ -1,12 +1,16 @@
 package ${package.ServiceImpl};
 
+import javax.annotation.Resource;
 import ${package.Entity}.${entity};
 import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
-import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
 <#if baseMethods?seq_contains("findAll")>
 import java.util.List;
+</#if>
+<#if baseMethods?seq_contains("findByPage")>
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import java.util.Map;
 </#if>
 
 /**
@@ -17,7 +21,7 @@ import java.util.List;
 public class ${table.serviceImplName} implements ${table.serviceName} {
 
     @Resource
-    private ${table.mapperName} ${mapperBeanName}
+    private ${table.mapperName} ${mapperBeanName};
 
 <#if baseMethods?seq_contains("add")>
     @Override
@@ -29,9 +33,10 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
 <#if baseMethods?seq_contains("update")>
     @Override
     public void update(${entity} ${entityName}) {
-    ${mapperBeanName}.updateById(${entityName});
+        ${mapperBeanName}.updateById(${entityName});
     }
 </#if>
+
 <#if baseMethods?seq_contains("delete")>
     @Override
     public void delete(String id) {
@@ -48,7 +53,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
 
 <#if baseMethods?seq_contains("findByPage")>
     @Override
-    public Page<${entity}> findByPage(Map<String, Object> params, Integer page, Intege size) {
+    public Page<${entity}> findByPage(Map<String, Object> params, Integer page, Integer size) {
         return ${mapperBeanName}.findByPage(new Page<>(page, size), params);
     }
 </#if>

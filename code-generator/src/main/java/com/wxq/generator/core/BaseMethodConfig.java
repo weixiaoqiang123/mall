@@ -51,6 +51,7 @@ public class BaseMethodConfig {
         public Builder commonResultClass(Class clazz){
             if(clazz != null){
                 this.baseMethodConfig.commonReturnType = clazz.getSimpleName();
+                this.baseMethodConfig.commonResultType = clazz.getSimpleName();
                 this.baseMethodConfig.commonResultClass = clazz.getName();
             }
             return this;
