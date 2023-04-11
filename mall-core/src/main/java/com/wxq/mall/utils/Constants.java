@@ -13,4 +13,6 @@ public class Constants {
     public static final String USER = "user";
     // token请求头
     public static final String TOKEN_HEADER = "Authorization";
+    // menu root
+    public static final String MENU_ROOT_CODE = "-1";
 }
