@@ -18,7 +18,7 @@ public class BaseGenerator {
     private static String OUTPUT_DIR = WORK_SPACE + "/code";
 
     protected static StrategyConfig.Builder strategyConfig(StrategyConfig.Builder builder) {
-        builder.entityBuilder().enableRemoveIsPrefix();
+        builder.entityBuilder().enableRemoveIsPrefix().enableTableFieldAnnotation();
         builder.mapperBuilder().enableBaseResultMap().enableMapperAnnotation();
         return builder;
     }
