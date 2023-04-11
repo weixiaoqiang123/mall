@@ -1,6 +1,7 @@
 package com.wxq.mall.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -22,12 +23,15 @@ public class UmsAdminLoginLog implements Serializable {
     private Integer id;
 
     @ApiModelProperty("用户名")
+    @TableField("username")
     private String username;
 
     @ApiModelProperty("登录IP")
+    @TableField("ip")
     private String ip;
 
     @ApiModelProperty("创建时间")
+    @TableField("create_time")
     private LocalDate createTime;
 
     public Integer getId() {

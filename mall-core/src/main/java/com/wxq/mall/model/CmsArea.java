@@ -1,6 +1,7 @@
 package com.wxq.mall.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -22,15 +23,19 @@ public class CmsArea implements Serializable {
     private Integer id;
 
     @ApiModelProperty("地区编码")
+    @TableField("area_code")
     private String areaCode;
 
     @ApiModelProperty("地区名称")
+    @TableField("area_name")
     private String areaName;
 
     @ApiModelProperty("父级地区编码")
+    @TableField("parent_area_code")
     private String parentAreaCode;
 
     @ApiModelProperty("地区级别")
+    @TableField("area_level")
     private String areaLevel;
 
     public Integer getId() {

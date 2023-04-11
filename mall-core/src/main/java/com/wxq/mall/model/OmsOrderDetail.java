@@ -1,6 +1,7 @@
 package com.wxq.mall.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -24,36 +25,47 @@ public class OmsOrderDetail implements Serializable {
     private Integer id;
 
     @ApiModelProperty("订单编码")
+    @TableField("oder_code")
     private String oderCode;
 
     @ApiModelProperty("商品编码")
+    @TableField("product_id")
     private String productId;
 
     @ApiModelProperty("商品名称")
+    @TableField("product_name")
     private String productName;
 
     @ApiModelProperty("商品库存编码")
+    @TableField("sku_code")
     private String skuCode;
 
     @ApiModelProperty("购买数量")
+    @TableField("buy_num")
     private Integer buyNum;
 
     @ApiModelProperty("商品属性")
+    @TableField("product_attr")
     private String productAttr;
 
     @ApiModelProperty("订单创建时间")
+    @TableField("create_time")
     private LocalDate createTime;
 
     @ApiModelProperty("原价")
+    @TableField("original_price")
     private BigDecimal originalPrice;
 
     @ApiModelProperty("售价")
+    @TableField("sale_price")
     private BigDecimal salePrice;
 
     @ApiModelProperty("商家编码")
+    @TableField("business_code")
     private String businessCode;
 
     @ApiModelProperty("商家名称")
+    @TableField("business_name")
     private String businessName;
 
     public Integer getId() {

@@ -1,6 +1,7 @@
 package com.wxq.mall.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -22,15 +23,19 @@ public class PmsBanner implements Serializable {
     private Integer id;
 
     @ApiModelProperty("图片名称")
+    @TableField("name")
     private String name;
 
     @ApiModelProperty("图片地址")
+    @TableField("url")
     private String url;
 
     @ApiModelProperty("图片状态: 0 不生效 1 生效")
+    @TableField("status")
     private Integer status;
 
     @ApiModelProperty("图片顺序")
+    @TableField("order")
     private Integer order;
 
     public Integer getId() {

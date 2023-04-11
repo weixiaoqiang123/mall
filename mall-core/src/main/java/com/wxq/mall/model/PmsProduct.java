@@ -1,6 +1,7 @@
 package com.wxq.mall.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -23,56 +24,74 @@ public class PmsProduct implements Serializable {
     private Integer id;
 
     @ApiModelProperty("商品编码,32位UUID")
+    @TableField("product_id")
     private String productId;
 
     @ApiModelProperty("商家编码")
+    @TableField("business_code")
     private String businessCode;
 
     @ApiModelProperty("商家名称")
+    @TableField("business_name")
     private String businessName;
 
     @ApiModelProperty("商品名称")
+    @TableField("product_name")
     private String productName;
 
     @ApiModelProperty("商品描述")
+    @TableField("product_desc")
     private String productDesc;
 
     @ApiModelProperty("商品分类编码")
+    @TableField("cate_code")
     private String cateCode;
 
     @ApiModelProperty("0 编辑 1 发布 2 下线")
+    @TableField("status")
     private Integer status;
 
     @ApiModelProperty("销售数量")
+    @TableField("sale_num")
     private Integer saleNum;
 
     @ApiModelProperty("是否为新品: 0 否 1 是")
+    @TableField("new_status")
     private Integer newStatus;
 
     @ApiModelProperty("是否推荐: 0 否 1 是")
+    @TableField("recommand_status")
     private Integer recommandStatus;
 
     @ApiModelProperty("审核状态: 0 未审核 1 审核通过 2 审核不通过")
+    @TableField("verify_status")
     private Integer verifyStatus;
 
+    @TableField("price")
     private String price;
 
     @ApiModelProperty("商品库存")
+    @TableField("stock")
     private Integer stock;
 
     @ApiModelProperty("预警库存")
+    @TableField("low_stock")
     private Integer lowStock;
 
     @ApiModelProperty("创建时间")
+    @TableField("create_time")
     private LocalDate createTime;
 
     @ApiModelProperty("修改时间")
+    @TableField("update_time")
     private LocalDate updateTime;
 
     @ApiModelProperty("发布时间")
+    @TableField("publish_time")
     private LocalDate publishTime;
 
     @ApiModelProperty("下线时间")
+    @TableField("off_time")
     private LocalDate offTime;
 
     public Integer getId() {

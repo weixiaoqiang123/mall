@@ -1,6 +1,7 @@
 package com.wxq.mall.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -22,12 +23,15 @@ public class PmsProductAttribute implements Serializable {
     private Integer id;
 
     @ApiModelProperty("商品编码")
+    @TableField("product_id")
     private String productId;
 
     @ApiModelProperty("属性ID")
+    @TableField("attr_id")
     private String attrId;
 
     @ApiModelProperty("属性名称")
+    @TableField("attr_name")
     private String attrName;
 
     public Integer getId() {

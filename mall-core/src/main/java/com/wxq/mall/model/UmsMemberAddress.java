@@ -1,6 +1,7 @@
 package com.wxq.mall.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -22,24 +23,31 @@ public class UmsMemberAddress implements Serializable {
     private Integer id;
 
     @ApiModelProperty("会员关联ID")
+    @TableField("member_id")
     private String memberId;
 
     @ApiModelProperty("收件人姓名")
+    @TableField("receive_name")
     private String receiveName;
 
     @ApiModelProperty("收件人电话")
+    @TableField("receive_phone")
     private String receivePhone;
 
     @ApiModelProperty("省编码")
+    @TableField("province_id")
     private String provinceId;
 
     @ApiModelProperty("市")
+    @TableField("city_id")
     private String cityId;
 
     @ApiModelProperty("区/县")
+    @TableField("region_id")
     private String regionId;
 
     @ApiModelProperty("详细地址")
+    @TableField("detail_address")
     private String detailAddress;
 
     public Integer getId() {

@@ -1,6 +1,7 @@
 package com.wxq.mall.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -24,39 +25,51 @@ public class PmsCart implements Serializable {
     private Integer id;
 
     @ApiModelProperty("用户账号")
+    @TableField("account")
     private String account;
 
     @ApiModelProperty("商品ID")
+    @TableField("product_id")
     private String productId;
 
     @ApiModelProperty("商品名称")
+    @TableField("product_name")
     private String productName;
 
     @ApiModelProperty("商品库存编码")
+    @TableField("sku_code")
     private String skuCode;
 
     @ApiModelProperty("商品属性(json)")
+    @TableField("product_attr")
     private String productAttr;
 
     @ApiModelProperty("商品原价")
+    @TableField("price")
     private BigDecimal price;
 
     @ApiModelProperty("商品数量")
+    @TableField("quantity")
     private Integer quantity;
 
     @ApiModelProperty("商品主图")
+    @TableField("picture")
     private String picture;
 
     @ApiModelProperty("商家编码")
+    @TableField("business_code")
     private String businessCode;
 
     @ApiModelProperty("商家名称")
+    @TableField("business_name")
     private String businessName;
 
     @ApiModelProperty("创建时间")
+    @TableField("create_time")
     private LocalDate createTime;
 
     @ApiModelProperty("修改时间")
+    @TableField("update_time")
     private LocalDate updateTime;
 
     public Integer getId() {

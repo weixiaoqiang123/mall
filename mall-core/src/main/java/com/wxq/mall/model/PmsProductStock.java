@@ -1,5 +1,6 @@
 package com.wxq.mall.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -17,24 +18,31 @@ public class PmsProductStock implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("主键")
+    @TableField("id")
     private Integer id;
 
     @ApiModelProperty("库存图片")
+    @TableField("image")
     private String image;
 
     @ApiModelProperty("商品ID")
+    @TableField("product_id")
     private String productId;
 
     @ApiModelProperty("商品库存编码")
+    @TableField("sku_code")
     private String skuCode;
 
     @ApiModelProperty("原价")
+    @TableField("price")
     private BigDecimal price;
 
     @ApiModelProperty("促销价格")
+    @TableField("promotion_price")
     private BigDecimal promotionPrice;
 
     @ApiModelProperty("销售数量")
+    @TableField("sale_num")
     private Integer saleNum;
 
     public Integer getId() {
