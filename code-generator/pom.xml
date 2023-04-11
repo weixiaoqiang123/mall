@@ -40,12 +40,11 @@
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
-            <version>2.3.30</version>
         </dependency>
 
         <dependency>
             <groupId>com.wxq.mall</groupId>
-            <artifactId>mall-common</artifactId>
+            <artifactId>mall-core</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

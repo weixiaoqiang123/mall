@@ -2,8 +2,8 @@ package com.wxq.generator.core;
 
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
-import com.wxq.common.model.ResultBody;
-import com.wxq.generator.util.CommonUtils;
+import com.wxq.core.model.ResultBody;
+import com.wxq.core.utils.CommonUtils;
 import java.util.Collections;
 import java.util.Map;
 
@@ -19,7 +19,7 @@ public class BaseGenerator {
 
     protected static StrategyConfig.Builder strategyConfig(StrategyConfig.Builder builder) {
         builder.entityBuilder().enableRemoveIsPrefix();
-        builder.mapperBuilder().enableBaseResultMap();
+        builder.mapperBuilder().enableBaseResultMap().enableMapperAnnotation();
         return builder;
     }
 
@@ -75,7 +75,7 @@ public class BaseGenerator {
             Map<String, Object> baseMethodsMap = baseMethodsConfig.build().toMap();
             stringObjectMap.putAll(baseMethodsMap);
 
-            System.out.println("tableInfo: " + tableInfo + ",objectMap: " + stringObjectMap + ", baseMethodsConfig: " + baseMethodsMap);
+            // System.out.println("tableInfo: " + tableInfo + ",objectMap: " + stringObjectMap + ", baseMethodsConfig: " + baseMethodsMap);
         })).customMap(Collections.singletonMap("test", "baomidou"));
     }
 
