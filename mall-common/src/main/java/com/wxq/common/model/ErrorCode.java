@@ -22,9 +22,14 @@ public class ErrorCode {
     public static final int COMMON_ERROR = 2;
 
     /**
-     * 登陆，验证失败
+     * token过期
      */
-    public static final int LOGIN_WRONG = 30001;
+    public static final int TOKEN_EXPIRE = 30001;
+
+    /**
+     * 非法token
+     */
+    public static final int ILLEGAL_TOKEN = 30002;
 
 
     /**

@@ -55,28 +55,21 @@ public class ResultBody<T> {
         this.data = data;
     }
 
-    public static <T> ResultBody<T> success(String msg){
+    public static <T> ResultBody<T> success(String msg, T data){
         ResultBody<T> responseVo = new ResultBody<>();
         responseVo.setCode(ErrorCode.SUCCESS);
         responseVo.setSuccess(true);
         responseVo.setMessage(msg);
-        return responseVo;
-    }
-
-    public static <T> ResultBody<T> success(String msg, T data){
-        ResultBody<T> responseVo = success(msg);
         responseVo.setData(data);
         return responseVo;
     }
 
     public static <T> ResultBody<T> success(T data){
-        ResultBody<T> responseVo = success("");
-        responseVo.setData(data);
-        return responseVo;
+        return success("", data);
     }
 
     public static ResultBody success(){
-        return success("");
+        return success("", null);
     }
 
     public static <T> ResultBody<T> fail(String msg){
@@ -85,5 +78,9 @@ public class ResultBody<T> {
         responseVo.setSuccess(false);
         responseVo.setMessage(msg);
         return responseVo;
+    }
+
+    public static ResultBody fail(){
+        return fail("");
     }
 }
