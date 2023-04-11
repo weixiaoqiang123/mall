@@ -1,6 +1,5 @@
 package com.wxq.mall.model;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -19,11 +18,11 @@ public class CmsRole implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("主键")
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableField("id")
     private Integer id;
 
     @ApiModelProperty("角色ID")
-    @TableField("role_id")
+    @TableId("role_id")
     private String roleId;
 
     @ApiModelProperty("角色名称")
