@@ -1,0 +1,6 @@
+mall:
+  exluce-login-path:
+    - /login-admin
+    - /loign-member
+    - /logout-admin
+    - /logout-member

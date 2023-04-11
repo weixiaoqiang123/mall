@@ -5,11 +5,6 @@ spring:
   profiles:
     active: dev
 
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
 mybatis-plus:
   mapper-locations: classpath:mapper/*Mapper.xml
   configuration:
