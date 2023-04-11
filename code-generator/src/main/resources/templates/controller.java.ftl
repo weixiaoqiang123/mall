@@ -45,6 +45,9 @@ public class ${table.controllerName} {
 
     <#if baseMethods?seq_contains("add")>
     @PostMapping
+    <#if !restControllerStyle>
+    @ResponseBody
+    </#if>
     public ${commonReturnType} add(@RequestBody ${entity} ${entityName}) {
         ${serviceBeanName}.add(${entityName});
         return <#if commonReturnType == "Object">new ResponseEntity<>(HttpStatus.CREATED)<#else>${commonResultType}.success()</#if>;
@@ -53,6 +56,9 @@ public class ${table.controllerName} {
 
     <#if baseMethods?seq_contains("update")>
     @PutMapping
+    <#if !restControllerStyle>
+    @ResponseBody
+    </#if>
     public ${commonReturnType} update(@RequestBody ${entity} ${entityName}) {
         ${serviceBeanName}.update(${entityName});
         return <#if commonReturnType == "Object">new ResponseEntity<>(HttpStatus.Ok)<#else>${commonResultType}.success()</#if>;
@@ -61,6 +67,9 @@ public class ${table.controllerName} {
 
     <#if baseMethods?seq_contains("delete")>
     @DeleteMapping("/{id}")
+    <#if !restControllerStyle>
+    @ResponseBody
+    </#if>
     public ${commonReturnType} delete(@PathVariable String id) {
         ${serviceBeanName}.delete(id);
         return <#if commonReturnType == "Object">new ResponseEntity<>(HttpStatus.NO_CONTENT)<#else>${commonResultType}.success()</#if>;
@@ -69,6 +78,9 @@ public class ${table.controllerName} {
 
     <#if baseMethods?seq_contains("get")>
     @GetMapping("/{id}")
+    <#if !restControllerStyle>
+    @ResponseBody
+    </#if>
     public ${commonReturnType} get(@PathVariable String id) {
         ${entity} entity = ${serviceBeanName}.get(id);
         return <#if commonReturnType == "Object">new ResponseEntity<>(entity, HttpStatus.Ok)<#else>${commonResultType}.success(entity)</#if>;
@@ -77,6 +89,9 @@ public class ${table.controllerName} {
 
     <#if baseMethods?seq_contains("findByPage")>
     @GetMapping("/findByPage")
+    <#if !restControllerStyle>
+    @ResponseBody
+    </#if>
     public ${commonReturnType} findByPage(@RequestParam Map<String,Object> params,
                                          @RequestParam Integer page,
                                          @RequestParam Integer size) {
@@ -87,6 +102,9 @@ public class ${table.controllerName} {
 
     <#if baseMethods?seq_contains("findAll")>
     @GetMapping("/findAll")
+    <#if !restControllerStyle>
+    @ResponseBody
+    </#if>
     public ${commonReturnType} findAll() {
         List<${entity}> data = ${serviceBeanName}.findAll();
         return <#if commonReturnType == "Object">new ResponseEntity<>(data, HttpStatus.Ok)<#else>${commonResultType}.success(data)</#if>;
