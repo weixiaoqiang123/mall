@@ -62,4 +62,11 @@ public class CmsMenuController {
         cmsMenuService.saveMenuRoles(menuId, roles);
         return ResultBody.success();
     }
+
+    @GetMapping("/findLastLevelMenus")
+    @ResponseBody
+    public ResultBody findLastLevelMenus(){
+        List<CmsMenu> menus = cmsMenuService.findLastLevelMenus();
+        return ResultBody.success(menus);
+    }
 }

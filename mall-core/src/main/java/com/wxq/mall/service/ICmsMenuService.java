@@ -25,4 +25,6 @@ public interface ICmsMenuService {
     List<TreeNode> findMenuTree();
 
     void saveMenuRoles(String menuId, List<CmsRole> roles);
+
+    List<CmsMenu> findLastLevelMenus();
 }

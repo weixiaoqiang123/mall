@@ -25,4 +25,6 @@ public interface CmsMenuMapper extends BaseMapper<CmsMenu> {
     void deleteMenuRoleMapByMenuId(String menuId);
 
     List<CmsRole> findMenuRolesByMenuId(String menuId);
+
+    List<CmsMenu> findLastLevelMenus();
 }

@@ -14,6 +14,13 @@
         <result column="url" property="url" />
     </resultMap>
 
+    <resultMap id="roleMap" type="com.wxq.mall.model.CmsRole">
+        <id column="id" property="id" />
+        <result column="role_id" property="roleId" />
+        <result column="role_name" property="roleName" />
+        <result column="role_desc" property="roleDesc" />
+    </resultMap>
+
     <insert id="addMenuRoleMap">
         insert into cms_menu_role_map(menu_id, role_id) values (#{menuId}, #{roleId})
     </insert>
@@ -32,11 +39,17 @@
         from cms_menu
     </select>
 
-    <select id="findMenuRolesByMenuId" parameterType="string" resultMap="baseMap">
+    <select id="findMenuRolesByMenuId" parameterType="string" resultMap="roleMap">
         select r.*
         from cms_role r
         inner join cms_menu_role_map m
         on r.role_id = m.role_id
         where menu_id = #{menuId}
+    </select>
+
+    <select id="findLastLevelMenus" resultMap="baseMap">
+        select m.*
+        from cms_menu m
+        where menu_level = (select max(menu_level) from cms_menu)
     </select>
 </mapper>

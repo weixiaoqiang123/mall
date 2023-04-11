@@ -64,4 +64,9 @@ public class CmsMenuServiceImpl implements ICmsMenuService {
             cmsMenuMapper.addMenuRoleMap(menuId, role.getRoleId());
         }
     }
+
+    @Override
+    public List<CmsMenu> findLastLevelMenus() {
+        return cmsMenuMapper.findLastLevelMenus();
+    }
 }
