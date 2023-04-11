@@ -13,9 +13,9 @@ CREATE TABLE ums_admin(
     `register_method` VARCHAR(20)    COMMENT '注册方式: mobile/qq' ,
     `phone` VARCHAR(11)    COMMENT '手机号' ,
     `email` VARCHAR(50)    COMMENT '邮箱' ,
-    `create_time` DATETIME    COMMENT '创建时间' ,
+    `create_time` DATE    COMMENT '创建时间' ,
     `status` INT(1)    COMMENT '用户状态: 0 未启用 1 启用' ,
-    `login_time` DATETIME    COMMENT '最后登录时间' ,
+    `login_time` DATE    COMMENT '最后登录时间' ,
     PRIMARY KEY (id)
 )  COMMENT = '管理员用户表';
 
@@ -24,7 +24,7 @@ CREATE TABLE ums_admin_login_log(
     `id` INT NOT NULL AUTO_INCREMENT  COMMENT '' ,
     `username` VARCHAR(100)    COMMENT '用户名' ,
     `ip` VARCHAR(20)    COMMENT '登录IP' ,
-    `create_time` DATETIME    COMMENT '创建时间' ,
+    `create_time` DATE    COMMENT '创建时间' ,
     PRIMARY KEY (id)
 )  COMMENT = '后台用户登录日志';
 
@@ -39,8 +39,8 @@ CREATE TABLE ums_member(
     `phone` VARCHAR(11)    COMMENT '手机号' ,
     `email` VARCHAR(30)    COMMENT '邮箱' ,
     `status` INT NOT NULL   COMMENT '状态: 0 未启用 1 启用' ,
-    `create_time` DATETIME    COMMENT '创建时间' ,
-    `login_time` DATETIME    COMMENT '最后一次登录时间' ,
+    `create_time` DATE    COMMENT '创建时间' ,
+    `login_time` DATE    COMMENT '最后一次登录时间' ,
     PRIMARY KEY (id)
 )  COMMENT = '会员表';
 
@@ -66,7 +66,7 @@ CREATE TABLE ums_business(
     `city_id` VARCHAR(10)    COMMENT '市' ,
     `region_id` VARCHAR(10)    COMMENT '区/县' ,
     `detail_address` VARCHAR(100)    COMMENT '商家详细地址(街道)' ,
-    `create_time` DATETIME    COMMENT '创建时间' ,
+    `create_time` DATE    COMMENT '创建时间' ,
     PRIMARY KEY (id)
 )  COMMENT = '商家表';
 
@@ -97,10 +97,10 @@ CREATE TABLE pms_product(
     `price` VARCHAR(255)    COMMENT '' ,
     `stock` INT    COMMENT '商品库存' ,
     `low_stock` INT    COMMENT '预警库存' ,
-    `create_time` DATETIME    COMMENT '创建时间' ,
-    `update_time` DATETIME    COMMENT '修改时间' ,
-    `publish_time` DATETIME    COMMENT '发布时间' ,
-    `off_time` DATETIME    COMMENT '下线时间' ,
+    `create_time` DATE    COMMENT '创建时间' ,
+    `update_time` DATE    COMMENT '修改时间' ,
+    `publish_time` DATE    COMMENT '发布时间' ,
+    `off_time` DATE    COMMENT '下线时间' ,
     PRIMARY KEY (id)
 )  COMMENT = '商品表';
 
@@ -127,7 +127,7 @@ DROP TABLE IF EXISTS pms_product_detail;
 CREATE TABLE pms_product_detail(
     `id` INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
     `product_id` VARCHAR(32) NOT NULL   COMMENT '商品编码' ,
-    `detail` TEXT NOT NULL   COMMENT '商品详情' ,
+    `detail` MEDIUMTEXT NOT NULL   COMMENT '商品详情' ,
     PRIMARY KEY (id)
 )  COMMENT = '商品详情表';
 
@@ -172,8 +172,8 @@ CREATE TABLE pms_cart(
     `picture` VARCHAR(100) NOT NULL   COMMENT '商品主图' ,
     `business_code` VARCHAR(32)    COMMENT '商家编码' ,
     `business_name` VARCHAR(100)    COMMENT '商家名称' ,
-    `create_time` DATETIME    COMMENT '创建时间' ,
-    `update_time` DATETIME    COMMENT '修改时间' ,
+    `create_time` DATE    COMMENT '创建时间' ,
+    `update_time` DATE    COMMENT '修改时间' ,
     PRIMARY KEY (id)
 )  COMMENT = '购物车';
 
@@ -189,7 +189,7 @@ CREATE TABLE oms_order(
     `stauts` INT    COMMENT '订单状态: 0 未付款 1 待发货 2 已发货 3 已收货' ,
     `order_type` INT    COMMENT '订单类型: 0 正常订单 1 秒杀订单' ,
     `confirm_status` INT    COMMENT '收货状态: 0 未确认 1 已确认' ,
-    `create_time` DATETIME    COMMENT '订单创建时间' ,
+    `create_time` DATE    COMMENT '订单创建时间' ,
     PRIMARY KEY (id)
 )  COMMENT = '订单表';
 
@@ -200,11 +200,11 @@ CREATE TABLE oms_order_detail(
     `product_id` VARCHAR(32)    COMMENT '商品编码' ,
     `product_name` VARCHAR(100)    COMMENT '商品名称' ,
     `sku_code` VARCHAR(32)    COMMENT '商品库存编码' ,
-    `buy_num` VARCHAR(255)    COMMENT '购买数量' ,
+    `buy_num` INT    COMMENT '购买数量' ,
     `product_attr` VARCHAR(1000)    COMMENT '商品属性' ,
-    `create_time` BLOB(255)    COMMENT '订单创建时间' ,
-    `original_price` VARCHAR(255)    COMMENT '原价' ,
-    `sale_price` VARCHAR(255)    COMMENT '售价' ,
+    `create_time` DATE    COMMENT '订单创建时间' ,
+    `original_price` DECIMAL(8,2)    COMMENT '原价' ,
+    `sale_price` DECIMAL(8,2)    COMMENT '售价' ,
     `business_code` VARCHAR(32)    COMMENT '商家编码' ,
     `business_name` VARCHAR(100)    COMMENT '商家名称' ,
     PRIMARY KEY (id)
