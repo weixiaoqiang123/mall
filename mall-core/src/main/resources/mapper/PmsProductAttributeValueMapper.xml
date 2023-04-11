@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxq.mall.mapper.PmsProductAttributeValueMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseMap" type="com.wxq.mall.model.PmsProductAttributeValue">
+        <id column="id" property="id" />
+        <result column="product_id" property="productId" />
+        <result column="attribute_id" property="attributeId" />
+        <result column="attr_value_name" property="attrValueName" />
+    </resultMap>
+
+
+    <select id="findByPage" resultMap="baseMap">
+        select id,product_id,attribute_id,attr_value_name
+        from pms_product_attribute_value
+    </select>
+
+    <select id="findAll" resultMap="baseMap">
+        select id,product_id,attribute_id,attr_value_name
+        from pms_product_attribute_value
+    </select>
+</mapper>

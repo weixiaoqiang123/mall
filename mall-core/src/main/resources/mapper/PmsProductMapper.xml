@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxq.mall.mapper.PmsProductMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseMap" type="com.wxq.mall.model.PmsProduct">
+        <id column="id" property="id" />
+        <result column="product_id" property="productId" />
+        <result column="business_code" property="businessCode" />
+        <result column="business_name" property="businessName" />
+        <result column="product_name" property="productName" />
+        <result column="product_desc" property="productDesc" />
+        <result column="cate_code" property="cateCode" />
+        <result column="status" property="status" />
+        <result column="sale_num" property="saleNum" />
+        <result column="new_status" property="newStatus" />
+        <result column="recommand_status" property="recommandStatus" />
+        <result column="verify_status" property="verifyStatus" />
+        <result column="price" property="price" />
+        <result column="stock" property="stock" />
+        <result column="low_stock" property="lowStock" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="publish_time" property="publishTime" />
+        <result column="off_time" property="offTime" />
+    </resultMap>
+
+
+    <select id="findByPage" resultMap="baseMap">
+        select id,product_id,business_code,business_name,product_name,product_desc,cate_code,status,sale_num,new_status,recommand_status,verify_status,price,stock,low_stock,create_time,update_time,publish_time,off_time
+        from pms_product
+    </select>
+
+    <select id="findAll" resultMap="baseMap">
+        select id,product_id,business_code,business_name,product_name,product_desc,cate_code,status,sale_num,new_status,recommand_status,verify_status,price,stock,low_stock,create_time,update_time,publish_time,off_time
+        from pms_product
+    </select>
+</mapper>

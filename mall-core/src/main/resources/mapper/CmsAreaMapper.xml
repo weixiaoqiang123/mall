@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxq.mall.mapper.CmsAreaMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseMap" type="com.wxq.mall.model.CmsArea">
+        <id column="id" property="id" />
+        <result column="area_code" property="areaCode" />
+        <result column="area_name" property="areaName" />
+        <result column="parent_area_code" property="parentAreaCode" />
+        <result column="area_level" property="areaLevel" />
+    </resultMap>
+
+
+    <select id="findByPage" resultMap="baseMap">
+        select id,area_code,area_name,parent_area_code,area_level
+        from cms_area
+    </select>
+
+    <select id="findAll" resultMap="baseMap">
+        select id,area_code,area_name,parent_area_code,area_level
+        from cms_area
+    </select>
+</mapper>

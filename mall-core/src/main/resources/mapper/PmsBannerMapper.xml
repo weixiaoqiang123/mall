@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxq.mall.mapper.PmsBannerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseMap" type="com.wxq.mall.model.PmsBanner">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="url" property="url" />
+        <result column="status" property="status" />
+        <result column="order" property="order" />
+    </resultMap>
+
+
+    <select id="findByPage" resultMap="baseMap">
+        select id,name,url,status,order
+        from pms_banner
+    </select>
+
+    <select id="findAll" resultMap="baseMap">
+        select id,name,url,status,order
+        from pms_banner
+    </select>
+</mapper>

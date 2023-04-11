@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxq.mall.mapper.OmsOrderDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseMap" type="com.wxq.mall.model.OmsOrderDetail">
+        <id column="id" property="id" />
+        <result column="oder_code" property="oderCode" />
+        <result column="product_id" property="productId" />
+        <result column="product_name" property="productName" />
+        <result column="sku_code" property="skuCode" />
+        <result column="buy_num" property="buyNum" />
+        <result column="product_attr" property="productAttr" />
+        <result column="create_time" property="createTime" />
+        <result column="original_price" property="originalPrice" />
+        <result column="sale_price" property="salePrice" />
+        <result column="business_code" property="businessCode" />
+        <result column="business_name" property="businessName" />
+    </resultMap>
+
+
+    <select id="findByPage" resultMap="baseMap">
+        select id,oder_code,product_id,product_name,sku_code,buy_num,product_attr,create_time,original_price,sale_price,business_code,business_name
+        from oms_order_detail
+    </select>
+
+    <select id="findAll" resultMap="baseMap">
+        select id,oder_code,product_id,product_name,sku_code,buy_num,product_attr,create_time,original_price,sale_price,business_code,business_name
+        from oms_order_detail
+    </select>
+</mapper>
