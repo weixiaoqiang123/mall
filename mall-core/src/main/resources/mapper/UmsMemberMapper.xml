@@ -27,4 +27,10 @@
         select id,username,password,nickname,head_img,register_method,phone,email,status,create_time,login_time
         from ums_member
     </select>
+
+    <select id="findByUsername" parameterType="string" resultMap="baseMap">
+        select id,username,password,nickname,head_img,register_method,phone,email,create_time,status,login_time
+        from ums_member
+        where username = #{username}
+    </select>
 </mapper>

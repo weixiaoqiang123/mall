@@ -2,6 +2,7 @@ package com.wxq.mall.mapper;
 
 import com.wxq.mall.model.UmsMember;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.wxq.mall.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.Map;
@@ -18,4 +19,6 @@ public interface UmsMemberMapper extends BaseMapper<UmsMember> {
     Page<UmsMember> findByPage(Page<UmsMember> page, @Param("params") Map<String, Object> params);
 
     List<UmsMember> findAll();
+
+    User findByUsername(String username);
 }

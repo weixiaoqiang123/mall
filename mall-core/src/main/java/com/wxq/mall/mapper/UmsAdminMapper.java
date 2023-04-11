@@ -15,6 +15,8 @@ import java.util.List;
 @Mapper
 public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
 
+    UmsAdmin findByUsername(String username);
+
     Page<UmsAdmin> findByPage(Page<UmsAdmin> page, @Param("params") Map<String, Object> params);
 
     List<UmsAdmin> findAll();
