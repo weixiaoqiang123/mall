@@ -226,12 +226,13 @@ CREATE TABLE cms_menu(
      `menu_code` VARCHAR(8)    COMMENT '菜单编码 8位UUID' ,
      `menu_name` VARCHAR(20)    COMMENT '菜单名称' ,
      `parent_menu_code` VARCHAR(8)    COMMENT '父级菜单编码' ,
-     `level` INT(255)    COMMENT '菜单级别' ,
-     `order` INT(255)   DEFAULT 0 COMMENT '菜单顺序' ,
+     `menu_level` INT(255)    COMMENT '菜单级别' ,
+     `menu_order` INT(255)   DEFAULT 0 COMMENT '菜单顺序' ,
      `is_leaf` INT    COMMENT '是否是叶子菜单: 0 目录 1 页面' ,
      `url` VARCHAR(100)    COMMENT '菜单地址 仅叶子菜单有' ,
      PRIMARY KEY (id)
 )  COMMENT = '菜单表';
+
 
 
 DROP TABLE IF EXISTS cms_role;
