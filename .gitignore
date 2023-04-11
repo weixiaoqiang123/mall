@@ -25,3 +25,5 @@
 .DS_Store
 
 */target
+hu# 忽略代码生成文件夹
+code
