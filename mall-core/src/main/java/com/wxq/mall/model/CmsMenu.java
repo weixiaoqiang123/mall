@@ -1,10 +1,10 @@
 package com.wxq.mall.model;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import com.wxq.core.Tree;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -14,16 +14,16 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @TableName("cms_menu")
 @ApiModel(value = "CmsMenu对象", description = "菜单表")
-public class CmsMenu implements Serializable {
+public class CmsMenu implements Serializable, Tree {
 
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("主键")
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableField("id")
     private Integer id;
 
     @ApiModelProperty("菜单编码 8位UUID")
-    @TableField("menu_code")
+    @TableId("menu_code")
     private String menuCode;
 
     @ApiModelProperty("菜单名称")
@@ -127,5 +127,15 @@ public class CmsMenu implements Serializable {
             ", isLeaf=" + isLeaf +
             ", url=" + url +
         "}";
+    }
+
+    @Override
+    public String getCurrentNodeId() {
+        return menuCode;
+    }
+
+    @Override
+    public String getParentNodeId() {
+        return parentMenuCode;
     }
 }

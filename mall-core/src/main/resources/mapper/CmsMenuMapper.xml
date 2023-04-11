@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxq.mall.mapper.CmsMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseMap" type="com.wxq.mall.model.CmsMenu">
+        <id column="id" property="id" />
+        <result column="menu_code" property="menuCode" />
+        <result column="menu_name" property="menuName" />
+        <result column="parent_menu_code" property="parentMenuCode" />
+        <result column="menu_level" property="menuLevel" />
+        <result column="menu_order" property="menuOrder" />
+        <result column="is_leaf" property="isLeaf" />
+        <result column="url" property="url" />
+    </resultMap>
+
+    <insert id="addMenuRoleMap">
+        insert into cms_menu_role_map(menu_id, role_id) values (#{menuId}, #{roleId})
+    </insert>
+
+    <delete id="deleteMenuRoleMapByMenuId" parameterType="string">
+        delete from cms_menu_role_map where menu_id=#{menuId}
+    </delete>
+
+    <select id="findByPage" resultMap="baseMap">
+        select id,menu_code,menu_name,parent_menu_code,menu_level,menu_order,is_leaf,url
+        from cms_menu
+    </select>
+
+    <select id="findAll" resultMap="baseMap">
+        select id,menu_code,menu_name,parent_menu_code,menu_level,menu_order,is_leaf,url
+        from cms_menu
+    </select>
+
+    <select id="findMenuRolesByMenuId" parameterType="string" resultMap="baseMap">
+        select r.*
+        from cms_role r
+        inner join cms_menu_role_map m
+        on r.role_id = m.role_id
+        where menu_id = #{menuId}
+    </select>
+</mapper>
