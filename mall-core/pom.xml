@@ -61,6 +61,11 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.wxq</groupId>
+            <artifactId>model-tree</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

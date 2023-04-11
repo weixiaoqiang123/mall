@@ -21,6 +21,17 @@
         <module>mall-common</module>
     </modules>
 
+    <repositories>
+        <repository>
+            <id>model-tree</id>
+            <url>https://raw.github.com/weixiaoqiang123/mvn-repo/main/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -34,6 +45,7 @@
         <spring.boot.starter.web.version>2.2.2.RELEASE</spring.boot.starter.web.version>
         <mybatis.plus.version>3.4.2</mybatis.plus.version>
         <boot.processor.version>2.4.0</boot.processor.version>
+        <model.tree.version>1.0.1</model.tree.version>
     </properties>
 
     <dependencyManagement>
