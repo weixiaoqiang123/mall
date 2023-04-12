@@ -92,7 +92,7 @@ CREATE TABLE pms_product(
     `status` INT    COMMENT '0 编辑 1 发布 2 下线' ,
     `sale_num` INT    COMMENT '销售数量' ,
     `new_status` INT    COMMENT '是否为新品: 0 否 1 是' ,
-    `recommand_status` INT    COMMENT '是否推荐: 0 否 1 是' ,
+    `recommend_status` INT    COMMENT '是否推荐: 0 否 1 是' ,
     `verify_status` INT    COMMENT '审核状态: 0 未审核 1 审核通过 2 审核不通过' ,
     `price` VARCHAR(255)    COMMENT '' ,
     `stock` INT    COMMENT '商品库存' ,
