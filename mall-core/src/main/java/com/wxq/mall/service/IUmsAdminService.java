@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface IUmsAdminService {
 
-    void add(UmsAdmin umsAdmin);
+    void register(UmsAdmin user);
 
     void update(UmsAdmin umsAdmin);
 

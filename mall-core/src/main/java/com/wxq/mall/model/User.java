@@ -27,6 +27,9 @@ public abstract class User {
     @ApiModelProperty("用户头像")
     protected String headImg;
 
+    /**
+     * @see com.wxq.mall.type.UserRegisterMethod
+     */
     @ApiModelProperty("注册方式: mobile/qq")
     protected String registerMethod;
 
@@ -39,6 +42,9 @@ public abstract class User {
     @ApiModelProperty("创建时间")
     protected LocalDate createTime;
 
+    /**
+     * @see com.wxq.mall.type.UserStatus
+     */
     @ApiModelProperty("用户状态: 0 未启用 1 启用")
     protected Integer status;
 

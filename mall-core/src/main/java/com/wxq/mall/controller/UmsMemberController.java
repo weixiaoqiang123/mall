@@ -23,8 +23,8 @@ public class UmsMemberController {
 
     @PostMapping
     @ResponseBody
-    public ResultBody add(@RequestBody UmsMember umsMember) {
-        umsMemberService.add(umsMember);
+    public ResultBody register(@RequestBody UmsMember user) {
+        umsMemberService.register(user);
         return ResultBody.success();
     }
 

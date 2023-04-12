@@ -1,10 +1,18 @@
 package com.wxq.mall.service.impl;
 
 import javax.annotation.Resource;
+
+import com.wxq.mall.exception.BaseException;
 import com.wxq.mall.model.UmsMember;
 import com.wxq.mall.mapper.UmsMemberMapper;
+import com.wxq.mall.model.User;
 import com.wxq.mall.service.IUmsMemberService;
+import com.wxq.mall.type.UserRegisterMethod;
+import com.wxq.mall.type.UserStatus;
+import com.wxq.mall.utils.Assert;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.Map;
@@ -20,8 +28,21 @@ public class UmsMemberServiceImpl implements IUmsMemberService {
     private UmsMemberMapper umsMemberMapper;
 
     @Override
-    public void add(UmsMember umsMember) {
-        umsMemberMapper.insert(umsMember);
+    public void register(UmsMember user) {
+        user.setCreateTime(LocalDate.now());
+        user.setStatus(UserStatus.ENABLE.getStatus());
+        UserRegisterMethod registerMethod = UserRegisterMethod.valueOf(user.getRegisterMethod());
+        if(registerMethod == UserRegisterMethod.MOBILE) {
+            User dbUser = umsMemberMapper.findByUsername(user.getPhone());
+            Assert.isNull(dbUser, new BaseException("手机号已被注册"));
+            // 使用手机号作用户名
+            user.setUsername(user.getPhone());
+        } else if(registerMethod == UserRegisterMethod.QQ) {
+
+        } else {
+
+        }
+        umsMemberMapper.insert(user);
     }
 
     @Override
