@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
     public ResultBody handleCustomException(Throwable e){
-        // log.error("系统异常: ", e);
+        log.error("系统异常: ", e);
         ResultBody resultBody = ResultBody.fail("服务器异常");
         if(e instanceof BaseException){
             resultBody = ResultBody.fail(e.getMessage());
