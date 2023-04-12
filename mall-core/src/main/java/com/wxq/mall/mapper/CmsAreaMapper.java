@@ -18,4 +18,6 @@ public interface CmsAreaMapper extends BaseMapper<CmsArea> {
     Page<CmsArea> findByPage(Page<CmsArea> page, @Param("params") Map<String, Object> params);
 
     List<CmsArea> findAll();
+
+    List<CmsArea> findAreasByParentCode(String parentCode);
 }

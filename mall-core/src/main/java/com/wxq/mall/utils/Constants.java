@@ -15,4 +15,6 @@ public class Constants {
     public static final String TOKEN_HEADER = "Authorization";
     // menu root
     public static final String MENU_ROOT_CODE = "-1";
+    // area root
+    public static final String AREA_ROOT_CODE = "100000";
 }

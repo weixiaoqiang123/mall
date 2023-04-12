@@ -1,67 +1,38 @@
 package com.wxq.mall.controller;
 
+import com.wxq.modeltree.core.TreeNode;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
-import com.wxq.mall.model.CmsArea;
 import com.wxq.mall.service.ICmsAreaService;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.Map;
-import java.util.List;
 import org.springframework.stereotype.Controller;
 import com.wxq.common.model.ResultBody;
+
+import java.util.List;
 
 /**
  * @author weixiaoqiang
  * @date 2023-04-11
  */
 @Controller
-@RequestMapping("/cms-area")
+@RequestMapping("/area")
+@Api(tags = "地区管理")
 public class CmsAreaController {
 
     @Resource
-    private ICmsAreaService cmsAreaService;
+    private ICmsAreaService areaService;
 
-    @PostMapping
+    @GetMapping("/provinces")
     @ResponseBody
-    public ResultBody add(@RequestBody CmsArea cmsArea) {
-        cmsAreaService.add(cmsArea);
-        return ResultBody.success();
+    public ResultBody provinces(){
+        List<TreeNode> provinces = areaService.provinces();
+        return ResultBody.success(provinces);
     }
 
-    @PutMapping
+    @GetMapping("/children/{parentCode}")
     @ResponseBody
-    public ResultBody update(@RequestBody CmsArea cmsArea) {
-        cmsAreaService.update(cmsArea);
-        return ResultBody.success();
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseBody
-    public ResultBody delete(@PathVariable String id) {
-        cmsAreaService.delete(id);
-        return ResultBody.success();
-    }
-
-    @GetMapping("/{id}")
-    @ResponseBody
-    public ResultBody get(@PathVariable String id) {
-        CmsArea entity = cmsAreaService.get(id);
-        return ResultBody.success(entity);
-    }
-
-    @GetMapping("/findByPage")
-    @ResponseBody
-    public ResultBody findByPage(@RequestParam Map<String,Object> params,
-                                         @RequestParam Integer page,
-                                         @RequestParam Integer size) {
-        Page<CmsArea> pageModel = cmsAreaService.findByPage(params, page, size);
-        return ResultBody.success(pageModel);
-    }
-
-    @GetMapping("/findAll")
-    @ResponseBody
-    public ResultBody findAll() {
-        List<CmsArea> data = cmsAreaService.findAll();
-        return ResultBody.success(data);
+    public ResultBody findAreaTree(@PathVariable String parentCode){
+        List<TreeNode> areaTree = areaService.findAreasByParentCode(parentCode);
+        return ResultBody.success(areaTree);
     }
 }

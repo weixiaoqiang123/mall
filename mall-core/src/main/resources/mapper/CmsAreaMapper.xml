@@ -21,4 +21,11 @@
         select id,area_code,area_name,parent_area_code,area_level
         from cms_area
     </select>
+
+    <select id="findAreasByParentCode" parameterType="string" resultMap="baseMap">
+        select id,area_code,area_name,parent_area_code,area_level
+        from cms_area
+        where parent_area_code = #{parentCode}
+        or parent_area_code in (select area_code from cms_area where parent_area_code = #{parentCode})
+    </select>
 </mapper>
