@@ -2,14 +2,14 @@ package com.wxq.mall.service.impl;
 
 import javax.annotation.Resource;
 
-import com.wxq.core.TreeNode;
 import com.wxq.mall.model.CmsMenu;
 import com.wxq.mall.mapper.CmsMenuMapper;
 import com.wxq.mall.model.CmsRole;
 import com.wxq.mall.service.ICmsMenuService;
 import com.wxq.mall.utils.Constants;
 import com.wxq.mall.utils.SimpleKeyUtil;
-import com.wxq.utils.TreeUtils;
+import com.wxq.modeltree.core.TreeNode;
+import com.wxq.modeltree.utils.TreeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import java.util.List;

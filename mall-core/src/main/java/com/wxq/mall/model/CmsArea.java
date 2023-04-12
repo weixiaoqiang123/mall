@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import com.wxq.modeltree.core.Tree;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -14,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @TableName("cms_area")
 @ApiModel(value = "CmsArea对象", description = "地区表")
-public class CmsArea implements Serializable {
+public class CmsArea implements Serializable, Tree {
 
     private static final long serialVersionUID = 1L;
 
@@ -88,5 +89,15 @@ public class CmsArea implements Serializable {
             ", parentAreaCode=" + parentAreaCode +
             ", areaLevel=" + areaLevel +
         "}";
+    }
+
+    @Override
+    public String getCurrentNodeId() {
+        return areaCode;
+    }
+
+    @Override
+    public String getParentNodeId() {
+        return parentAreaCode;
     }
 }

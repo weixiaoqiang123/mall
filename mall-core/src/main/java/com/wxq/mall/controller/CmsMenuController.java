@@ -1,7 +1,7 @@
 package com.wxq.mall.controller;
 
-import com.wxq.core.TreeNode;
 import com.wxq.mall.model.CmsRole;
+import com.wxq.modeltree.core.TreeNode;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import com.wxq.mall.model.CmsMenu;
