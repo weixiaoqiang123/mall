@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS cms_area;
 CREATE TABLE cms_area(
     `id` INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
     `area_code` VARCHAR(10) NOT NULL   COMMENT '地区编码' ,
-    `area_name` VARCHAR(10) NOT NULL   COMMENT '地区名称' ,
+    `area_name` VARCHAR(50) NOT NULL   COMMENT '地区名称' ,
     `parent_area_code` VARCHAR(10) NOT NULL   COMMENT '父级地区编码' ,
     `area_level` VARCHAR(255)    COMMENT '地区级别' ,
     PRIMARY KEY (id)
