@@ -15,7 +15,11 @@ import java.util.List;
 @Mapper
 public interface PmsCartMapper extends BaseMapper<PmsCart> {
 
-    Page<PmsCart> findByPage(Page<PmsCart> page, @Param("params") Map<String, Object> params);
+    Page<Map<String, Object>> findByPage(Page<Map<String, Object>> page, @Param("params") Map<String, Object> params);
 
     List<PmsCart> findAll();
+
+    PmsCart findCartInfo(String productId, String skuCode, String account);
+
+    List<PmsCart> findCartByBusinessCode(String businessCode);
 }

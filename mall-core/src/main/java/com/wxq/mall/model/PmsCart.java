@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -40,7 +40,7 @@ public class PmsCart implements Serializable {
     @TableField("sku_code")
     private String skuCode;
 
-    @ApiModelProperty("商品属性(json)")
+    @ApiModelProperty("商品属性值 分号分隔")
     @TableField("product_attr")
     private String productAttr;
 
@@ -66,11 +66,11 @@ public class PmsCart implements Serializable {
 
     @ApiModelProperty("创建时间")
     @TableField("create_time")
-    private LocalDate createTime;
+    private Date createTime;
 
     @ApiModelProperty("修改时间")
     @TableField("update_time")
-    private LocalDate updateTime;
+    private Date updateTime;
 
     public Integer getId() {
         return id;
@@ -160,19 +160,19 @@ public class PmsCart implements Serializable {
         this.businessName = businessName;
     }
 
-    public LocalDate getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(LocalDate createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public LocalDate getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(LocalDate updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 

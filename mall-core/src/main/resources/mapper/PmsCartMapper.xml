@@ -19,14 +19,21 @@
         <result column="update_time" property="updateTime" />
     </resultMap>
 
-
-    <select id="findByPage" resultMap="baseMap">
-        select id,account,product_id,product_name,sku_code,product_attr,price,quantity,picture,business_code,business_name,create_time,update_time
-        from pms_cart
+    <select id="findByPage" resultType="map">
+        select distinct business_code,business_name from pms_cart
     </select>
 
     <select id="findAll" resultMap="baseMap">
         select id,account,product_id,product_name,sku_code,product_attr,price,quantity,picture,business_code,business_name,create_time,update_time
         from pms_cart
+    </select>
+
+    <select id="findCartInfo" resultMap="baseMap">
+        select * from pms_cart
+        where account = #{account} and sku_code = #{sku_code} and product_id = #{productId}
+    </select>
+
+    <select id="findCartByBusinessCode" parameterType="string" resultMap="baseMap">
+        select * from pms_cart where business_code = #{businessCode}
     </select>
 </mapper>
