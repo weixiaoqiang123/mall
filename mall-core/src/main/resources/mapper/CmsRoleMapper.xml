@@ -10,6 +10,32 @@
         <result column="role_desc" property="roleDesc" />
     </resultMap>
 
+    <resultMap id="menuMap" type="com.wxq.mall.model.CmsMenu">
+        <id column="id" property="id" />
+        <result column="menu_code" property="menuCode" />
+        <result column="menu_name" property="menuName" />
+        <result column="parent_menu_code" property="parentMenuCode" />
+        <result column="menu_level" property="menuLevel" />
+        <result column="menu_order" property="menuOrder" />
+        <result column="is_leaf" property="isLeaf" />
+        <result column="url" property="url" />
+    </resultMap>
+
+    <resultMap id="buttonDicMap" type="com.wxq.mall.model.CmsMenuButtonDic">
+        <id column="id" property="id" />
+        <result column="menu_id" property="menuId" />
+        <result column="button_id" property="buttonId" />
+        <result column="button_name" property="buttonName" />
+        <result column="button_type" property="buttonType" />
+    </resultMap>
+
+    <insert id="saveRoleButtonMap">
+        insert into cms_role_button_dic_map(role_id,button_dic_id) values (#{roleId}, #{buttonDicId})
+    </insert>
+
+    <delete id="deleteRoleButtonMapByRoleId">
+        delete from cms_role_button_dic_map where role_id = #{roleId}
+    </delete>
 
     <select id="findByPage" resultMap="baseMap">
         select id,role_id,role_name,role_desc
@@ -26,5 +52,23 @@
     <select id="findAll" resultMap="baseMap">
         select id,role_id,role_name,role_desc
         from cms_role
+    </select>
+
+    <select id="findMenusByRoleId" parameterType="string" resultMap="menuMap">
+        select m.id,menu_code,menu_name,parent_menu_code,menu_level,menu_order,is_leaf,url
+        from cms_menu m
+        inner join cms_menu_role_map rm
+        on m.menu_id = rm.menu_id
+        inner join cms_role r
+        on r.role_id = rm.role_id
+        where r.role_id = #{roleId}
+    </select>
+
+    <select id="findRoleAuthButtons" parameterType="string" resultMap="buttonDicMap">
+        select id,menu_id,button_id,button_name,button_type
+        from cms_menu_button_dic d
+        inner join cms_role_button_dic_map dm
+        on d.id = dm.button_dic_id
+        where dm.role_id = #{roleId} and d.menu_id = #{menuId}
     </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.wxq.mall.service;
 
+import com.wxq.mall.model.CmsMenu;
+import com.wxq.mall.model.CmsMenuButtonDic;
 import com.wxq.mall.model.CmsRole;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.Map;
@@ -22,4 +24,10 @@ public interface ICmsRoleService {
     Page<CmsRole> findByPage(Map<String,Object> params, Integer page, Integer size);
 
     List<CmsRole> findAll();
+
+    void saveRoleButtonMap(String roleId, List<Integer> buttonDicIds);
+
+    List<CmsMenu> findMenusByRoleId(String roleId);
+
+    List<CmsMenuButtonDic> findRoleAuthButtons(String roleId, String menuId);
 }

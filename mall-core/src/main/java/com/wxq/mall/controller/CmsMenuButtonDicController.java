@@ -1,6 +1,7 @@
 package com.wxq.mall.controller;
 
 import com.wxq.mall.type.ButtonAuthType;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import com.wxq.mall.model.CmsMenuButtonDic;
@@ -8,6 +9,7 @@ import com.wxq.mall.service.ICmsMenuButtonDicService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import com.wxq.common.model.ResultBody;
@@ -73,5 +75,13 @@ public class CmsMenuButtonDicController {
     public ResultBody checkCurrentMenuButtonIdUnique(@RequestParam String menuId, @RequestParam String buttonId){
         cmsMenuButtonDicService.checkCurrentMenuButtonIdUnique(menuId, buttonId);
         return ResultBody.success();
+    }
+
+    @GetMapping("/checkCurrentMenuButtonIdUnique")
+    @ResponseBody
+    @ApiOperation("根据菜单编码查询所有菜单按钮")
+    public ResultBody findMenuButtonsByMenuId(String menuId) {
+        List<CmsMenuButtonDic> buttonDicList = cmsMenuButtonDicService.findMenuButtonsByMenuId(menuId);
+        return ResultBody.success(buttonDicList);
     }
 }

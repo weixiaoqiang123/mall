@@ -29,4 +29,10 @@
         from cms_menu_button_dic
         where menu_id = #{menuId} and button_id = #{buttonId}
     </select>
+
+    <select id="findMenuButtonsByMenuId" parameterType="string" resultMap="baseMap">
+        select id,menu_id,button_id,button_name,button_type
+        from cms_menu_button_dic
+        where menu_id = #{menuId}
+    </select>
 </mapper>

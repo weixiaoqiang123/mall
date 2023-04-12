@@ -20,4 +20,6 @@ public interface CmsMenuButtonDicMapper extends BaseMapper<CmsMenuButtonDic> {
     List<CmsMenuButtonDic> findAll();
 
     CmsMenuButtonDic findDic(@Param("menuId") String menuId, @Param("buttonId") String buttonId);
+
+    List<CmsMenuButtonDic> findMenuButtonsByMenuId(String menuId);
 }

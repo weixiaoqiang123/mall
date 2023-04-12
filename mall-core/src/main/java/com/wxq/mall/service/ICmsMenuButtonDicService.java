@@ -24,4 +24,6 @@ public interface ICmsMenuButtonDicService {
     List<CmsMenuButtonDic> findAll();
 
     void checkCurrentMenuButtonIdUnique(String menuId, String buttonId);
+
+    List<CmsMenuButtonDic> findMenuButtonsByMenuId(String menuId);
 }

@@ -57,4 +57,9 @@ public class CmsMenuButtonDicServiceImpl implements ICmsMenuButtonDicService {
         CmsMenuButtonDic dic = cmsMenuButtonDicMapper.findDic(menuId, buttonId);
         Assert.isNull(dic, new BaseException("当前菜单下按钮已存在"));
     }
+
+    @Override
+    public List<CmsMenuButtonDic> findMenuButtonsByMenuId(String menuId) {
+        return cmsMenuButtonDicMapper.findMenuButtonsByMenuId(menuId);
+    }
 }

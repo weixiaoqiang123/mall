@@ -260,4 +260,11 @@ CREATE TABLE cms_admin_role_map(
    PRIMARY KEY (id)
 )  COMMENT = '用户角色关系表';
 
+DROP TABLE IF EXISTS cms_role_button_dic_map;
+CREATE TABLE cms_role_button_dic_map(
+    `id` INT NOT NULL AUTO_INCREMENT  COMMENT '' ,
+    `role_id` VARCHAR(8)    COMMENT '' ,
+    `button_dic_id` INT    COMMENT '' ,
+    PRIMARY KEY (id)
+)  COMMENT = '角色按钮关系表';
 
