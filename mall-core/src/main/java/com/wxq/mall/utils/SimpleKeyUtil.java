@@ -32,6 +32,10 @@ public class SimpleKeyUtil {
         return buffer.toString();
     }
 
+    public static String genUUID(){
+        return UUID.randomUUID().toString().replaceAll("-", "");
+    }
+
     public static void main(String[] args) {
         System.out.println(genShortUuId());
     }
