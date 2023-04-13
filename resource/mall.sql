@@ -59,15 +59,16 @@ CREATE TABLE ums_member_address(
 
 DROP TABLE IF EXISTS ums_business;
 CREATE TABLE ums_business(
-    `id` INT NOT NULL   COMMENT '主键' ,
-    `username` VARCHAR(100)    COMMENT '用户名' ,
-    `business_name` VARCHAR(100)    COMMENT '商家名称' ,
-    `province_id` VARCHAR(10)    COMMENT '省' ,
-    `city_id` VARCHAR(10)    COMMENT '市' ,
-    `region_id` VARCHAR(10)    COMMENT '区/县' ,
-    `detail_address` VARCHAR(100)    COMMENT '商家详细地址(街道)' ,
-    `create_time` DATE    COMMENT '创建时间' ,
-    PRIMARY KEY (id)
+     `id` INT NOT NULL   COMMENT '主键' ,
+     `username` VARCHAR(100)    COMMENT '用户名' ,
+     `business_code` VARCHAR(32)    COMMENT '商家编码' ,
+     `business_name` VARCHAR(100)    COMMENT '商家名称' ,
+     `province_id` VARCHAR(10)    COMMENT '省' ,
+     `city_id` VARCHAR(10)    COMMENT '市' ,
+     `region_id` VARCHAR(10)    COMMENT '区/县' ,
+     `detail_address` VARCHAR(100)    COMMENT '商家详细地址(街道)' ,
+     `create_time` DATETIME    COMMENT '创建时间' ,
+     PRIMARY KEY (id)
 )  COMMENT = '商家表';
 
 DROP TABLE IF EXISTS cms_area;
@@ -93,14 +94,14 @@ CREATE TABLE pms_product(
     `sale_num` INT    COMMENT '销售数量' ,
     `new_status` INT    COMMENT '是否为新品: 0 否 1 是' ,
     `recommend_status` INT    COMMENT '是否推荐: 0 否 1 是' ,
-    `verify_status` INT    COMMENT '审核状态: 0 未审核 1 审核通过 2 审核不通过' ,
-    `price` VARCHAR(255)    COMMENT '' ,
+    `verify_status` INT    COMMENT '审核状态: 0 审核中 1 审核通过 2 审核不通过' ,
+    `sale_price` decimal(8, 2)   COMMENT '商品售价' ,
     `stock` INT    COMMENT '商品库存' ,
     `low_stock` INT    COMMENT '预警库存' ,
     `create_time` DATE    COMMENT '创建时间' ,
     `update_time` DATE    COMMENT '修改时间' ,
     `publish_time` DATE    COMMENT '发布时间' ,
-    `off_time` DATE    COMMENT '下线时间' ,
+    `offline_time` DATE    COMMENT '下线时间' ,
     PRIMARY KEY (id)
 )  COMMENT = '商品表';
 
@@ -209,6 +210,22 @@ CREATE TABLE oms_order_detail(
     `business_name` VARCHAR(100)    COMMENT '商家名称' ,
     PRIMARY KEY (id)
 )  COMMENT = '订单详情表';
+
+DROP TABLE IF EXISTS pms_product_approval;
+CREATE TABLE pms_product_approval(
+     `id` INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
+     `username` VARCHAR(20)    COMMENT '用户名' ,
+     `business_name` VARCHAR(100)    COMMENT '商家名称' ,
+     `product_id` VARCHAR(255)    COMMENT '商品ID' ,
+     `product_name` VARCHAR(100)    COMMENT '商品名称' ,
+     `status` INT    COMMENT '审核状态: 0 审核中 1 审核通过 2 审核不通过' ,
+     `not_pass_message` VARCHAR(200)    COMMENT '审核不通过原因' ,
+     `create_time` DATETIME    COMMENT '审核记录创建时间' ,
+     `verify_time` DATETIME    COMMENT '审核时间' ,
+     `verify_name` VARCHAR(10)    COMMENT '审核人名称' ,
+     PRIMARY KEY (id)
+)  COMMENT = '商品上架审核表';
+
 
 DROP TABLE IF EXISTS cms_menu_button_dic;
 CREATE TABLE cms_menu_button_dic(
