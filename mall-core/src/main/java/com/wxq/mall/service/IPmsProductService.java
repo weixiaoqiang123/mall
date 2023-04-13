@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface IPmsProductService {
 
+    void save(PmsProduct pmsProduct);
+
     void add(PmsProduct pmsProduct);
 
     void update(PmsProduct pmsProduct);
@@ -22,4 +24,12 @@ public interface IPmsProductService {
     Page<PmsProduct> findByPage(Map<String,Object> params, Integer page, Integer size);
 
     List<PmsProduct> findAll();
+
+    void updateRecommendStatus(String productId, Integer status);
+
+    void updateNewProductStatus(String productId, Integer status);
+
+    void publish(String productId);
+
+    void offLine(String productId);
 }

@@ -1,5 +1,7 @@
 package com.wxq.mall.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import com.wxq.mall.model.PmsProduct;
@@ -15,37 +17,31 @@ import com.wxq.common.model.ResultBody;
  * @date 2023-04-11
  */
 @Controller
-@RequestMapping("/pms-product")
+@RequestMapping("/product")
+@Api(tags = "商品管理")
 public class PmsProductController {
 
     @Resource
-    private IPmsProductService pmsProductService;
+    private IPmsProductService productService;
 
     @PostMapping
     @ResponseBody
-    public ResultBody add(@RequestBody PmsProduct pmsProduct) {
-        pmsProductService.add(pmsProduct);
-        return ResultBody.success();
-    }
-
-    @PutMapping
-    @ResponseBody
-    public ResultBody update(@RequestBody PmsProduct pmsProduct) {
-        pmsProductService.update(pmsProduct);
+    public ResultBody save(@RequestBody PmsProduct pmsProduct) {
+        productService.save(pmsProduct);
         return ResultBody.success();
     }
 
     @DeleteMapping("/{id}")
     @ResponseBody
     public ResultBody delete(@PathVariable String id) {
-        pmsProductService.delete(id);
+        productService.delete(id);
         return ResultBody.success();
     }
 
     @GetMapping("/{id}")
     @ResponseBody
     public ResultBody get(@PathVariable String id) {
-        PmsProduct entity = pmsProductService.get(id);
+        PmsProduct entity = productService.get(id);
         return ResultBody.success(entity);
     }
 
@@ -54,14 +50,44 @@ public class PmsProductController {
     public ResultBody findByPage(@RequestParam Map<String,Object> params,
                                          @RequestParam Integer page,
                                          @RequestParam Integer size) {
-        Page<PmsProduct> pageModel = pmsProductService.findByPage(params, page, size);
+        Page<PmsProduct> pageModel = productService.findByPage(params, page, size);
         return ResultBody.success(pageModel);
     }
 
     @GetMapping("/findAll")
     @ResponseBody
     public ResultBody findAll() {
-        List<PmsProduct> data = pmsProductService.findAll();
+        List<PmsProduct> data = productService.findAll();
         return ResultBody.success(data);
+    }
+
+    @GetMapping("/publish/{productId}")
+    @ResponseBody
+    public ResultBody publish(@PathVariable String productId) {
+        productService.publish(productId);
+        return ResultBody.success();
+    }
+
+    @GetMapping("/offLine/{productId}")
+    @ResponseBody
+    public ResultBody offLine(@PathVariable String productId){
+        productService.offLine(productId);
+        return ResultBody.success();
+    }
+
+    @GetMapping("/updateRecommendStatus/{productId}")
+    @ResponseBody
+    @ApiOperation("修改推荐状态")
+    public ResultBody updateRecommendStatus(@PathVariable String productId, @RequestParam Integer status){
+        productService.updateRecommendStatus(productId, status);
+        return ResultBody.success();
+    }
+
+    @GetMapping("/updateNewProductStatus/{productId}")
+    @ResponseBody
+    @ApiOperation("修改新品状态")
+    public ResultBody updateNewProductStatus(@PathVariable String productId, @RequestParam Integer status){
+        productService.updateNewProductStatus(productId, status);
+        return ResultBody.success();
     }
 }

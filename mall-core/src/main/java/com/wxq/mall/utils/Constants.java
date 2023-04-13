@@ -17,4 +17,6 @@ public class Constants {
     public static final String MENU_ROOT_CODE = "-1";
     // area root
     public static final String AREA_ROOT_CODE = "100000";
+    // 商品审核角色
+    public static final String APPROVAL_ROLE_ID = "";
 }

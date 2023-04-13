@@ -14,25 +14,25 @@
         <result column="status" property="status" />
         <result column="sale_num" property="saleNum" />
         <result column="new_status" property="newStatus" />
-        <result column="recommand_status" property="recommandStatus" />
+        <result column="recommend_status" property="recommendStatus" />
         <result column="verify_status" property="verifyStatus" />
-        <result column="price" property="price" />
+        <result column="sale_price" property="salePrice" />
         <result column="stock" property="stock" />
         <result column="low_stock" property="lowStock" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
         <result column="publish_time" property="publishTime" />
-        <result column="off_time" property="offTime" />
+        <result column="offline_time" property="offlineTime" />
     </resultMap>
 
 
     <select id="findByPage" resultMap="baseMap">
-        select id,product_id,business_code,business_name,product_name,product_desc,cate_code,status,sale_num,new_status,recommand_status,verify_status,price,stock,low_stock,create_time,update_time,publish_time,off_time
+        select id,product_id,business_code,business_name,product_name,product_desc,cate_code,status,sale_num,new_status,recommend_status,verify_status,sale_price,stock,low_stock,create_time,update_time,publish_time,offline_time
         from pms_product
     </select>
 
     <select id="findAll" resultMap="baseMap">
-        select id,product_id,business_code,business_name,product_name,product_desc,cate_code,status,sale_num,new_status,recommand_status,verify_status,price,stock,low_stock,create_time,update_time,publish_time,off_time
+        select id,product_id,business_code,business_name,product_name,product_desc,cate_code,status,sale_num,new_status,recommend_status,verify_status,sale_price,stock,low_stock,create_time,update_time,publish_time,offline_time
         from pms_product
     </select>
 </mapper>

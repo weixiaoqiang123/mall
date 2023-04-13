@@ -1,11 +1,11 @@
 package com.wxq.mall.model;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
+import com.wxq.mall.type.product.ProductStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -20,11 +20,11 @@ public class PmsProduct implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("主键")
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableField(value = "id")
     private Integer id;
 
     @ApiModelProperty("商品编码,32位UUID")
-    @TableField("product_id")
+    @TableId("product_id")
     private String productId;
 
     @ApiModelProperty("商家编码")
@@ -47,6 +47,9 @@ public class PmsProduct implements Serializable {
     @TableField("cate_code")
     private String cateCode;
 
+    /**
+     * @see ProductStatus
+     */
     @ApiModelProperty("0 编辑 1 发布 2 下线")
     @TableField("status")
     private Integer status;
@@ -60,15 +63,19 @@ public class PmsProduct implements Serializable {
     private Integer newStatus;
 
     @ApiModelProperty("是否推荐: 0 否 1 是")
-    @TableField("recommand_status")
-    private Integer recommandStatus;
+    @TableField("recommend_status")
+    private Integer recommendStatus;
 
-    @ApiModelProperty("审核状态: 0 未审核 1 审核通过 2 审核不通过")
+    /**
+     * @see com.wxq.mall.type.product.ProductApproveStatus
+     */
+    @ApiModelProperty("审核状态: 0 审核中 1 审核通过 2 审核不通过")
     @TableField("verify_status")
     private Integer verifyStatus;
 
-    @TableField("price")
-    private String price;
+    @TableField("sale_price")
+    @ApiModelProperty("上架")
+    private String salePrice;
 
     @ApiModelProperty("商品库存")
     @TableField("stock")
@@ -80,19 +87,19 @@ public class PmsProduct implements Serializable {
 
     @ApiModelProperty("创建时间")
     @TableField("create_time")
-    private LocalDate createTime;
+    private Date createTime;
 
     @ApiModelProperty("修改时间")
     @TableField("update_time")
-    private LocalDate updateTime;
+    private Date updateTime;
 
     @ApiModelProperty("发布时间")
     @TableField("publish_time")
-    private LocalDate publishTime;
+    private Date publishTime;
 
     @ApiModelProperty("下线时间")
     @TableField("off_time")
-    private LocalDate offTime;
+    private Date offlineTime;
 
     public Integer getId() {
         return id;
@@ -174,12 +181,12 @@ public class PmsProduct implements Serializable {
         this.newStatus = newStatus;
     }
 
-    public Integer getRecommandStatus() {
-        return recommandStatus;
+    public Integer getRecommendStatus() {
+        return recommendStatus;
     }
 
-    public void setRecommandStatus(Integer recommandStatus) {
-        this.recommandStatus = recommandStatus;
+    public void setRecommendStatus(Integer recommendStatus) {
+        this.recommendStatus = recommendStatus;
     }
 
     public Integer getVerifyStatus() {
@@ -190,12 +197,12 @@ public class PmsProduct implements Serializable {
         this.verifyStatus = verifyStatus;
     }
 
-    public String getPrice() {
-        return price;
+    public String getSalePrice() {
+        return salePrice;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setSalePrice(String salePrice) {
+        this.salePrice = salePrice;
     }
 
     public Integer getStock() {
@@ -214,36 +221,36 @@ public class PmsProduct implements Serializable {
         this.lowStock = lowStock;
     }
 
-    public LocalDate getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(LocalDate createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public LocalDate getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(LocalDate updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
-    public LocalDate getPublishTime() {
+    public Date getPublishTime() {
         return publishTime;
     }
 
-    public void setPublishTime(LocalDate publishTime) {
+    public void setPublishTime(Date publishTime) {
         this.publishTime = publishTime;
     }
 
-    public LocalDate getOffTime() {
-        return offTime;
+    public Date getOfflineTime() {
+        return offlineTime;
     }
 
-    public void setOffTime(LocalDate offTime) {
-        this.offTime = offTime;
+    public void setOfflineTime(Date offlineTime) {
+        this.offlineTime = offlineTime;
     }
 
 
@@ -260,15 +267,15 @@ public class PmsProduct implements Serializable {
             ", status=" + status +
             ", saleNum=" + saleNum +
             ", newStatus=" + newStatus +
-            ", recommandStatus=" + recommandStatus +
+            ", recommendStatus=" + recommendStatus +
             ", verifyStatus=" + verifyStatus +
-            ", price=" + price +
+            ", salePrice=" + salePrice +
             ", stock=" + stock +
             ", lowStock=" + lowStock +
             ", createTime=" + createTime +
             ", updateTime=" + updateTime +
             ", publishTime=" + publishTime +
-            ", offTime=" + offTime +
+            ", offlineTime=" + offlineTime +
         "}";
     }
 }

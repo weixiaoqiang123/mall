@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxq.mall.mapper.PmsProductApprovalMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseMap" type="com.wxq.mall.model.PmsProductApproval">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="business_name" property="businessName" />
+        <result column="product_id" property="productId" />
+        <result column="product_name" property="productName" />
+        <result column="status" property="status" />
+        <result column="not_pass_message" property="notPassMessage" />
+        <result column="create_time" property="createTime" />
+        <result column="verify_time" property="verifyTime" />
+        <result column="verify_name" property="verifyName" />
+    </resultMap>
+
+
+    <select id="findByPage" resultMap="baseMap">
+        select id,username,business_name,product_id,product_name,status,not_pass_message,create_time,verify_time,verify_name,is_read
+        from pms_product_pub_verify
+    </select>
+
+    <select id="findAll" resultMap="baseMap">
+        select id,username,business_name,product_id,product_name,status,not_pass_message,create_time,verify_time,verify_name,is_read
+        from pms_product_pub_verify
+    </select>
+</mapper>
