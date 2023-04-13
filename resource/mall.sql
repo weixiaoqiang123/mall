@@ -268,3 +268,12 @@ CREATE TABLE cms_role_button_dic_map(
     PRIMARY KEY (id)
 )  COMMENT = '角色按钮关系表';
 
+DROP TABLE IF EXISTS cms_admin_notify_message;
+CREATE TABLE cms_admin_notify_message(
+     `id` INT NOT NULL   COMMENT '主键名称' ,
+     `username` VARCHAR(20)    COMMENT '用户名' ,
+     `message` VARCHAR(200)    COMMENT '消息内容' ,
+     `is_read` INT    COMMENT '0 未读 1 已读' ,
+     PRIMARY KEY (id)
+)  COMMENT = '用户消息通知表';
+

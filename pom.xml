@@ -53,6 +53,7 @@
         <swagger2.version>2.9.2</swagger2.version>
         <swagger.ui.version>2.9.2</swagger.ui.version>
         <swagger.version>1.5.22</swagger.version>
+        <websocket.version>2.2.2.RELEASE</websocket.version>
     </properties>
 
     <dependencyManagement>
@@ -197,6 +198,12 @@
                 <groupId>com.wxq</groupId>
                 <artifactId>model-tree</artifactId>
                 <version>${model.tree.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-websocket</artifactId>
+                <version>${websocket.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
