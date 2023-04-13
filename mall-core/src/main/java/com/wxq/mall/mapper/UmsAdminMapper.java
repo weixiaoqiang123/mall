@@ -20,4 +20,6 @@ public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
     Page<UmsAdmin> findByPage(Page<UmsAdmin> page, @Param("params") Map<String, Object> params);
 
     List<UmsAdmin> findAll();
+
+    List<UmsAdmin> findByRoleId(String roleId);
 }

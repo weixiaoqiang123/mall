@@ -2,7 +2,9 @@ package com.wxq.mall.service.impl;
 
 import com.wxq.mall.exception.BaseException;
 import com.wxq.mall.mapper.UmsAdminMapper;
+import com.wxq.mall.mapper.UmsBusinessMapper;
 import com.wxq.mall.mapper.UmsMemberMapper;
+import com.wxq.mall.model.UmsBusiness;
 import com.wxq.mall.model.User;
 import com.wxq.mall.service.LoginService;
 import com.wxq.mall.utils.Constants;
@@ -24,10 +26,17 @@ public class LoginServiceImpl implements LoginService {
     @Resource
     private UmsMemberMapper memberMapper;
 
+    @Resource
+    private UmsBusinessMapper businessMapper;
+
     @Override
     public String loginAdmin(String username, String password) {
         User user = adminMapper.findByUsername(username);
         checkUserInfoAndStore(user, password, Constants.ADMIN_USER);
+        UmsBusiness business = businessMapper.findByUsername(username);
+        if(business != null) {
+            RequestHolder.getSession().setAttribute(Constants.BUSINESS, business);
+        }
         return JwtUtil.createToken(username, Constants.TOKEN_EXPIRE_TIME);
     }
 
@@ -41,6 +50,10 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public void logoutAdmin() {
         RequestHolder.getSession().removeAttribute(Constants.ADMIN_USER);
+        Object business = RequestHolder.getSession().getAttribute(Constants.BUSINESS);
+        if(business != null){
+            RequestHolder.getSession().removeAttribute(Constants.BUSINESS);
+        }
     }
 
     @Override

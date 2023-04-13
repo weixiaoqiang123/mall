@@ -11,6 +11,7 @@ public class Constants {
     // 后台登录用户key
     public static final String ADMIN_USER = "admin-user";
     public static final String USER = "user";
+    public static final String BUSINESS = "business";
     // token请求头
     public static final String TOKEN_HEADER = "Authorization";
     // menu root

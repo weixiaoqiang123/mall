@@ -4,7 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -19,8 +20,12 @@ public class UmsBusiness implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("主键")
-    @TableId("id")
+    @TableField("id")
     private Integer id;
+
+    @ApiModelProperty("商家编码")
+    @TableId("business_code")
+    private String businessCode;
 
     @ApiModelProperty("用户名")
     @TableField("username")
@@ -48,7 +53,7 @@ public class UmsBusiness implements Serializable {
 
     @ApiModelProperty("创建时间")
     @TableField("create_time")
-    private LocalDate createTime;
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -106,14 +111,21 @@ public class UmsBusiness implements Serializable {
         this.detailAddress = detailAddress;
     }
 
-    public LocalDate getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(LocalDate createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
+    public void setBusinessCode(String businessCode) {
+        this.businessCode = businessCode;
+    }
+
+    public String getBusinessCode() {
+        return businessCode;
+    }
 
     @Override
     public String toString() {

@@ -18,4 +18,6 @@ public interface UmsBusinessMapper extends BaseMapper<UmsBusiness> {
     Page<UmsBusiness> findByPage(Page<UmsBusiness> page, @Param("params") Map<String, Object> params);
 
     List<UmsBusiness> findAll();
+
+    UmsBusiness findByUsername(String username);
 }

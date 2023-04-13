@@ -24,4 +24,8 @@
         select id,username,business_name,province_id,city_id,region_id,detail_address,create_time
         from ums_business
     </select>
+
+    <select id="findByUsername" parameterType="string" resultMap="baseMap">
+        select * from ums_business where username = #{username}
+    </select>
 </mapper>

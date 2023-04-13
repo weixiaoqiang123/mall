@@ -33,4 +33,11 @@
         from ums_admin
         where username = #{username}
     </select>
+
+    <select id="findByRoleId" parameterType="string" resultMap="baseMap">
+        select * from ums_admin u
+        inner join cms_admin_role_map m
+        on u.id = m.user_id
+        where m.role_id = #{roleId}
+    </select>
 </mapper>
