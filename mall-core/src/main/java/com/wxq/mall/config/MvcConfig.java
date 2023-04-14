@@ -1,5 +1,6 @@
 package com.wxq.mall.config;
 
+import com.wxq.mall.system.MallProperties;
 import com.wxq.mall.system.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
