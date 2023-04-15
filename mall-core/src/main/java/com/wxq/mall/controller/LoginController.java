@@ -1,7 +1,8 @@
 package com.wxq.mall.controller;
 
 import com.wxq.common.model.ResultBody;
-import com.wxq.mall.model.User;
+import com.wxq.mall.model.UmsAdmin;
+import com.wxq.mall.model.UmsMember;
 import com.wxq.mall.service.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,14 +23,14 @@ public class LoginController {
 
     @PostMapping("/login-admin")
     @ApiOperation(value = "后台用户登录")
-    public Object loginAdmin(@RequestBody User user){
+    public Object loginAdmin(@RequestBody UmsAdmin user){
         String token = loginService.loginAdmin(user.getUsername(), user.getPassword());
         return ResultBody.success(token);
     }
 
     @PostMapping("/login-member")
     @ApiOperation(value = "前台用户登录")
-    public Object login(@RequestBody User user){
+    public Object login(@RequestBody UmsMember user){
         String token = loginService.login(user.getUsername(), user.getPassword());
         return ResultBody.success(token);
     }

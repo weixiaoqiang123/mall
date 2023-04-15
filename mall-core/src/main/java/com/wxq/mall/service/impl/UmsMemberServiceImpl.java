@@ -13,6 +13,7 @@ import com.wxq.mall.utils.Assert;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class UmsMemberServiceImpl implements IUmsMemberService {
 
     @Override
     public void register(UmsMember user) {
-        user.setCreateTime(LocalDate.now());
+        user.setCreateTime(new Date());
         user.setStatus(UserStatus.ENABLE.getStatus());
         UserRegisterMethod registerMethod = UserRegisterMethod.valueOf(user.getRegisterMethod());
         if(registerMethod == UserRegisterMethod.MOBILE) {

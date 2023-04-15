@@ -32,7 +32,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public String loginAdmin(String username, String password) {
         User user = adminMapper.findByUsername(username);
-        checkUserInfoAndStore(user, password, Constants.ADMIN_USER);
+        checkUserInfoAndStore(user, password, Constants.USER);
         UmsBusiness business = businessMapper.findByUsername(username);
         if(business != null) {
             RequestHolder.getSession().setAttribute(Constants.BUSINESS, business);
@@ -49,7 +49,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public void logoutAdmin() {
-        RequestHolder.getSession().removeAttribute(Constants.ADMIN_USER);
+        RequestHolder.getSession().removeAttribute(Constants.USER);
         Object business = RequestHolder.getSession().getAttribute(Constants.BUSINESS);
         if(business != null){
             RequestHolder.getSession().removeAttribute(Constants.BUSINESS);

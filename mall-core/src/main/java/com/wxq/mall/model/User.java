@@ -3,7 +3,7 @@ package com.wxq.mall.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * @author weixiaoqiang
@@ -40,7 +40,7 @@ public abstract class User {
     protected String email;
 
     @ApiModelProperty("创建时间")
-    protected LocalDate createTime;
+    protected Date createTime;
 
     /**
      * @see com.wxq.mall.type.UserStatus
@@ -49,7 +49,7 @@ public abstract class User {
     protected Integer status;
 
     @ApiModelProperty("最后登录时间")
-    protected LocalDate loginTime;
+    protected Date loginTime;
 
     public Integer getId() {
         return id;
@@ -115,11 +115,11 @@ public abstract class User {
         this.email = email;
     }
 
-    public LocalDate getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(LocalDate createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
@@ -131,11 +131,11 @@ public abstract class User {
         this.status = status;
     }
 
-    public LocalDate getLoginTime() {
+    public Date getLoginTime() {
         return loginTime;
     }
 
-    public void setLoginTime(LocalDate loginTime) {
+    public void setLoginTime(Date loginTime) {
         this.loginTime = loginTime;
     }
 }
