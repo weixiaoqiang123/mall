@@ -7,7 +7,6 @@ import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Base64;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * @author weixiaoqiang
@@ -17,10 +16,17 @@ public class JwtUtil {
 
     private final static String base64Secret = "MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=";
 
+    /**
+     * 创建token
+     * @param userId
+     * @param time 过期时间 0表示不过期
+     * @return
+     */
     public static String createToken(String userId, int time) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         Calendar expireTime = Calendar.getInstance();
-        expireTime.add(Calendar.SECOND, time);
+        // time = 0 token不过期
+        expireTime.add(Calendar.SECOND, time == 0 ? Integer.MAX_VALUE : time);
         //生成签名密钥
         byte[] apiKeySecretBytes = Base64.getDecoder().decode(base64Secret);
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
