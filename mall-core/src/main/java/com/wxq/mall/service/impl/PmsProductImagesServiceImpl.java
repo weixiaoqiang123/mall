@@ -1,13 +1,14 @@
 package com.wxq.mall.service.impl;
 
 import javax.annotation.Resource;
-import com.wxq.mall.model.PmsProductImages;
+
 import com.wxq.mall.mapper.PmsProductImagesMapper;
+import com.wxq.mall.model.PmsProductImages;
 import com.wxq.mall.service.IPmsProductImagesService;
+import com.wxq.mall.utils.FileUploadUtil;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.Map;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author weixiaoqiang
@@ -17,35 +18,24 @@ import java.util.Map;
 public class PmsProductImagesServiceImpl implements IPmsProductImagesService {
 
     @Resource
-    private PmsProductImagesMapper pmsProductImagesMapper;
+    private PmsProductImagesMapper productImagesMapper;
 
     @Override
     public void add(PmsProductImages pmsProductImages) {
-        pmsProductImagesMapper.insert(pmsProductImages);
+        productImagesMapper.insert(pmsProductImages);
     }
 
     @Override
-    public void update(PmsProductImages pmsProductImages) {
-        pmsProductImagesMapper.updateById(pmsProductImages);
-    }
-
-    @Override
+    @Transactional
     public void delete(String id) {
-        pmsProductImagesMapper.deleteById(id);
+        PmsProductImages image = productImagesMapper.selectById(id);
+        productImagesMapper.deleteById(id);
+        // 删除图片服务器文件
+        FileUploadUtil.delete(image.getUrl());
     }
 
     @Override
-    public PmsProductImages get(String id) {
-        return pmsProductImagesMapper.selectById(id);
-    }
-
-    @Override
-    public Page<PmsProductImages> findByPage(Map<String, Object> params, Integer page, Integer size) {
-        return pmsProductImagesMapper.findByPage(new Page<>(page, size), params);
-    }
-
-    @Override
-    public List<PmsProductImages> findAll() {
-        return pmsProductImagesMapper.selectList(null);
+    public List<PmsProductImages> findPictureByProductId(String productId) {
+        return productImagesMapper.findPictureByProductId(productId);
     }
 }

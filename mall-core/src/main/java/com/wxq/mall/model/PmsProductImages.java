@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @date 2023-04-11
  */
 @TableName("pms_product_images")
-@ApiModel(value = "PmsProductImages对象", description = "商品图片表")
+@ApiModel(value = "商品图片")
 public class PmsProductImages implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -19,4 +19,8 @@
         select id,product_id,url
         from pms_product_images
     </select>
+
+    <select id="findPictureByProductId" parameterType="string" resultMap="baseMap">
+        select id,product_id,url from pms_product_images where product_id=#{productId}
+    </select>
 </mapper>

@@ -18,4 +18,6 @@ public interface PmsProductImagesMapper extends BaseMapper<PmsProductImages> {
     Page<PmsProductImages> findByPage(Page<PmsProductImages> page, @Param("params") Map<String, Object> params);
 
     List<PmsProductImages> findAll();
+
+    List<PmsProductImages> findPictureByProductId(String productId);
 }
