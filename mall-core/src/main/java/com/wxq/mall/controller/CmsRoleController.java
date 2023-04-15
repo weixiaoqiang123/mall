@@ -2,7 +2,7 @@ package com.wxq.mall.controller;
 
 import com.wxq.mall.model.CmsMenu;
 import com.wxq.mall.model.CmsMenuButtonDic;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import com.wxq.mall.model.CmsRole;
@@ -19,6 +19,7 @@ import com.wxq.common.model.ResultBody;
  */
 @Controller
 @RequestMapping("/cms-role")
+@Api(tags = "角色管理")
 public class CmsRoleController {
 
     @Resource
@@ -26,6 +27,7 @@ public class CmsRoleController {
 
     @PostMapping
     @ResponseBody
+    @ApiOperation("新增角色")
     public ResultBody add(@RequestBody CmsRole cmsRole) {
         roleService.add(cmsRole);
         return ResultBody.success();
@@ -33,6 +35,7 @@ public class CmsRoleController {
 
     @PutMapping
     @ResponseBody
+    @ApiOperation("修改角色")
     public ResultBody update(@RequestBody CmsRole cmsRole) {
         roleService.update(cmsRole);
         return ResultBody.success();
@@ -40,6 +43,7 @@ public class CmsRoleController {
 
     @DeleteMapping("/{id}")
     @ResponseBody
+    @ApiOperation(value = "根据ID删除角色", notes = "id为主键字段")
     public ResultBody delete(@PathVariable String id) {
         roleService.delete(id);
         return ResultBody.success();
@@ -47,6 +51,7 @@ public class CmsRoleController {
 
     @GetMapping("/{id}")
     @ResponseBody
+    @ApiOperation(value = "查询角色信息", notes = "id为主键字段")
     public ResultBody get(@PathVariable String id) {
         CmsRole entity = roleService.get(id);
         return ResultBody.success(entity);
@@ -63,6 +68,11 @@ public class CmsRoleController {
      */
     @GetMapping("/findByPage")
     @ResponseBody
+    @ApiOperation(value = "分页查询角色")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "roleId", value = "精确匹配角色ID"),
+            @ApiImplicitParam(name = "roleName", value = "模糊匹配角色名称")
+    })
     public ResultBody findByPage(@RequestParam Map<String,Object> params,
                                          @RequestParam Integer page,
                                          @RequestParam Integer size) {
@@ -72,6 +82,7 @@ public class CmsRoleController {
 
     @GetMapping("/findAll")
     @ResponseBody
+    @ApiOperation("查询全部角色")
     public ResultBody findAll() {
         List<CmsRole> data = roleService.findAll();
         return ResultBody.success(data);
