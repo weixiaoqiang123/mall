@@ -32,4 +32,6 @@ public interface IPmsProductService {
     void publish(String productId);
 
     void offLine(String productId);
+
+    PmsProduct getRoot(String id);
 }

@@ -18,4 +18,6 @@ public interface PmsProductMapper extends BaseMapper<PmsProduct> {
     Page<PmsProduct> findByPage(Page<PmsProduct> page, @Param("params") Map<String, Object> params);
 
     List<PmsProduct> findAll();
+
+    PmsProduct findProductDetailInfo(String productId);
 }

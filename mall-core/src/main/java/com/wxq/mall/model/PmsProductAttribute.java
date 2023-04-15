@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -33,6 +36,10 @@ public class PmsProductAttribute implements Serializable {
     @ApiModelProperty("属性名称")
     @TableField("attr_name")
     private String attrName;
+
+    @ApiModelProperty("商品属性值集合")
+    @TableField(exist = false)
+    private List<PmsProductAttributeValue> attrValues = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -66,6 +73,13 @@ public class PmsProductAttribute implements Serializable {
         this.attrName = attrName;
     }
 
+    public void setAttrValues(List<PmsProductAttributeValue> attrValues) {
+        this.attrValues = attrValues;
+    }
+
+    public List<PmsProductAttributeValue> getAttrValues() {
+        return attrValues;
+    }
 
     @Override
     public String toString() {

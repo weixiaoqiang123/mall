@@ -3,13 +3,8 @@ package com.wxq.mall.service.impl;
 import javax.annotation.Resource;
 
 import com.wxq.mall.controller.MessageDeliver;
-import com.wxq.mall.mapper.PmsProductApprovalMapper;
-import com.wxq.mall.mapper.PmsProductMapper;
-import com.wxq.mall.mapper.UmsBusinessMapper;
-import com.wxq.mall.model.PmsProduct;
-import com.wxq.mall.model.PmsProductApproval;
-import com.wxq.mall.model.UmsBusiness;
-import com.wxq.mall.model.User;
+import com.wxq.mall.mapper.*;
+import com.wxq.mall.model.*;
 import com.wxq.mall.service.IPmsProductService;
 import com.wxq.mall.system.MessageWrapper;
 import com.wxq.mall.type.product.ProductApproveStatus;
@@ -126,7 +121,10 @@ public class PmsProductServiceImpl implements IPmsProductService {
         product.setOfflineTime(new Date());
     }
 
-
+    @Override
+    public PmsProduct getRoot(String productId) {
+        return productMapper.findProductDetailInfo(productId);
+    }
 
     private PmsProductApproval createProductVerify(PmsProduct product, UmsBusiness business){
         User user = (User) RequestHolder.getSession().getAttribute(Constants.USER);

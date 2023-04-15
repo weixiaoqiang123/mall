@@ -9,9 +9,7 @@ import java.util.List;
  */
 public interface IPmsProductAttributeService {
 
-    void delete(String id);
-
-    void save(String productId, List<PmsProductAttribute> pmsProductAttributes);
+    void save(String productId, List<PmsProductAttribute> productAttrs);
 
     List<PmsProductAttribute> findAttrsByProductId(String productId);
 }

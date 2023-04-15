@@ -10,6 +10,11 @@
         <result column="attr_name" property="attrName" />
     </resultMap>
 
+    <resultMap id="refMap" type="com.wxq.mall.model.PmsProductAttribute" extends="baseMap">
+        <collection column="product_id" property="attrValues" javaType="list" ofType="com.wxq.mall.model.PmsProductAttributeValue"
+                    select="com.wxq.mall.mapper.PmsProductAttributeValueMapper.findAttrValuesByAttrId"/>
+    </resultMap>
+
     <delete id="deleteAttrByProductId" parameterType="string">
         delete from pms_product_attribute where product_id = #{productId}
     </delete>
@@ -25,7 +30,7 @@
         from pms_product_attribute
     </select>
 
-    <select id="findAttrsByProductId" parameterType="string" resultMap="baseMap">
+    <select id="findAttrsByProductId" parameterType="string" resultMap="refMap">
         select id,product_id,attr_id,attr_name
         from pms_product_attribute
         where product_id = #{productId}

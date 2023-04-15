@@ -9,6 +9,10 @@
         <result column="detail" property="detail" />
     </resultMap>
 
+    <delete id="deleteByProductId" parameterType="string">
+        delete from pms_product_detail where produc_id = #{productId}
+    </delete>
+
 
     <select id="findByPage" resultMap="baseMap">
         select id,product_id,detail
@@ -18,5 +22,11 @@
     <select id="findAll" resultMap="baseMap">
         select id,product_id,detail
         from pms_product_detail
+    </select>
+
+    <select id="findByProductId" parameterType="string" resultMap="baseMap">
+        select id,product_id,detail
+        from pms_product_detail
+        where product_id = #{productId}
     </select>
 </mapper>

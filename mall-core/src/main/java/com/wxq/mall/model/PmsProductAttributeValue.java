@@ -18,6 +18,14 @@ public class PmsProductAttributeValue implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public PmsProductAttributeValue(){}
+
+    public PmsProductAttributeValue(String productId, String attributeId, String attrValueName) {
+        this.productId = productId;
+        this.attributeId = attributeId;
+        this.attrValueName = attrValueName;
+    }
+
     @ApiModelProperty("主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;

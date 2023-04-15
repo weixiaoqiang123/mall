@@ -25,14 +25,31 @@
         <result column="offline_time" property="offlineTime" />
     </resultMap>
 
+    <resultMap id="detailMap" type="com.wxq.mall.model.PmsProduct" extends="baseMap">
+        <collection column="product_id" property="attrs" javaType="List" ofType="com.wxq.mall.model.PmsProductAttribute"
+                    select="com.wxq.mall.mapper.PmsProductAttributeMapper.findAttrsByProductId"/>
+        <collection column="product_id" property="images" javaType="List" ofType="com.wxq.mall.model.PmsProductImages"
+                    select="com.wxq.mall.mapper.PmsProductImagesMapper.findPictureByProductId"/>
+        <collection column="product_id" property="detail" javaType="List" ofType="com.wxq.mall.model.PmsProductDetail"
+                    select="com.wxq.mall.mapper.PmsProductDetailMapper.findByProductId"/>
+    </resultMap>
+
 
     <select id="findByPage" resultMap="baseMap">
         select id,product_id,business_code,business_name,product_name,product_desc,cate_code,status,sale_num,new_status,recommend_status,verify_status,sale_price,stock,low_stock,create_time,update_time,publish_time,offline_time
         from pms_product
+        where 1=1
+        <if test="params.productName!='' and params.productName!=null">
+            and product_name like concat('%', #{productName}, '%')
+        </if>
     </select>
 
     <select id="findAll" resultMap="baseMap">
         select id,product_id,business_code,business_name,product_name,product_desc,cate_code,status,sale_num,new_status,recommend_status,verify_status,sale_price,stock,low_stock,create_time,update_time,publish_time,offline_time
         from pms_product
+    </select>
+
+    <select id="findProductDetailInfo" parameterType="string" resultMap="detailMap">
+        select * from pms_product where product_id = #{productId}
     </select>
 </mapper>

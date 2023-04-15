@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import com.wxq.mall.type.product.ProductStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -100,6 +103,19 @@ public class PmsProduct implements Serializable {
     @ApiModelProperty("下线时间")
     @TableField("off_time")
     private Date offlineTime;
+
+    @ApiModelProperty("商品图片列表")
+    @TableField(exist = false)
+    private List<PmsProductImages> images = new ArrayList<>();
+
+    @ApiModelProperty(value = "商品属性列表", notes = "关联查询属性值")
+    @TableField(exist = false)
+    private List<PmsProductAttribute> attrs = new ArrayList<>();
+
+    @ApiModelProperty("商品详情信息")
+    @TableField(exist = false)
+    private PmsProductDetail detail;
+
 
     public Integer getId() {
         return id;
@@ -253,6 +269,29 @@ public class PmsProduct implements Serializable {
         this.offlineTime = offlineTime;
     }
 
+    public List<PmsProductImages> getImages() {
+        return images;
+    }
+
+    public void setImages(List<PmsProductImages> images) {
+        this.images = images;
+    }
+
+    public List<PmsProductAttribute> getAttrs() {
+        return attrs;
+    }
+
+    public void setAttrs(List<PmsProductAttribute> attrs) {
+        this.attrs = attrs;
+    }
+
+    public PmsProductDetail getDetail() {
+        return detail;
+    }
+
+    public void setDetail(PmsProductDetail detail) {
+        this.detail = detail;
+    }
 
     @Override
     public String toString() {
