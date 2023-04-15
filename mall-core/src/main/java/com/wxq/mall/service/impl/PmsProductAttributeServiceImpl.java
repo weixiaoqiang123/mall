@@ -1,13 +1,14 @@
 package com.wxq.mall.service.impl;
 
 import javax.annotation.Resource;
-import com.wxq.mall.model.PmsProductAttribute;
+
 import com.wxq.mall.mapper.PmsProductAttributeMapper;
+import com.wxq.mall.model.PmsProductAttribute;
 import com.wxq.mall.service.IPmsProductAttributeService;
+import com.wxq.mall.utils.SimpleKeyUtil;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.Map;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author weixiaoqiang
@@ -17,35 +18,26 @@ import java.util.Map;
 public class PmsProductAttributeServiceImpl implements IPmsProductAttributeService {
 
     @Resource
-    private PmsProductAttributeMapper pmsProductAttributeMapper;
-
-    @Override
-    public void add(PmsProductAttribute pmsProductAttribute) {
-        pmsProductAttributeMapper.insert(pmsProductAttribute);
-    }
-
-    @Override
-    public void update(PmsProductAttribute pmsProductAttribute) {
-        pmsProductAttributeMapper.updateById(pmsProductAttribute);
-    }
+    private PmsProductAttributeMapper productAttributeMapper;
 
     @Override
     public void delete(String id) {
-        pmsProductAttributeMapper.deleteById(id);
+        productAttributeMapper.deleteById(id);
     }
 
     @Override
-    public PmsProductAttribute get(String id) {
-        return pmsProductAttributeMapper.selectById(id);
+    @Transactional
+    public void save(String productId, List<PmsProductAttribute> pmsProductAttributes) {
+        productAttributeMapper.deleteAttrByProductId(productId);
+        for (PmsProductAttribute pmsProductAttribute : pmsProductAttributes) {
+            String attrId = SimpleKeyUtil.genShortUuId(8);
+            pmsProductAttribute.setAttrId(attrId);
+            productAttributeMapper.insert(pmsProductAttribute);
+        }
     }
 
     @Override
-    public Page<PmsProductAttribute> findByPage(Map<String, Object> params, Integer page, Integer size) {
-        return pmsProductAttributeMapper.findByPage(new Page<>(page, size), params);
-    }
-
-    @Override
-    public List<PmsProductAttribute> findAll() {
-        return pmsProductAttributeMapper.selectList(null);
+    public List<PmsProductAttribute> findAttrsByProductId(String productId) {
+        return productAttributeMapper.findAttrsByProductId(productId);
     }
 }

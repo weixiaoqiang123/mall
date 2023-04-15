@@ -18,4 +18,8 @@ public interface PmsProductAttributeMapper extends BaseMapper<PmsProductAttribut
     Page<PmsProductAttribute> findByPage(Page<PmsProductAttribute> page, @Param("params") Map<String, Object> params);
 
     List<PmsProductAttribute> findAll();
+
+    void deleteAttrByProductId(String productId);
+
+    List<PmsProductAttribute> findAttrsByProductId(String productId);
 }

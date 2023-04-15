@@ -10,6 +10,10 @@
         <result column="attr_name" property="attrName" />
     </resultMap>
 
+    <delete id="deleteAttrByProductId" parameterType="string">
+        delete from pms_product_attribute where product_id = #{productId}
+    </delete>
+
 
     <select id="findByPage" resultMap="baseMap">
         select id,product_id,attr_id,attr_name
@@ -19,5 +23,11 @@
     <select id="findAll" resultMap="baseMap">
         select id,product_id,attr_id,attr_name
         from pms_product_attribute
+    </select>
+
+    <select id="findAttrsByProductId" parameterType="string" resultMap="baseMap">
+        select id,product_id,attr_id,attr_name
+        from pms_product_attribute
+        where product_id = #{productId}
     </select>
 </mapper>

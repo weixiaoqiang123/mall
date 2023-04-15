@@ -18,7 +18,7 @@ public class SwaggerConfig extends BaseSwaggerConfig {
         return SwaggerProperties.builder()
                 .title("优乐购商城接口文档")
                 .description("")
-                .version("v1.0.0")
+                .version("v1.0.2")
                 .concatName("weixiaoqiang")
                 .concatEmail("")
                 .enableSecurity(true)

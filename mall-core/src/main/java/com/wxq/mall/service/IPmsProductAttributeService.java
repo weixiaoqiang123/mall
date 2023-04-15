@@ -1,8 +1,6 @@
 package com.wxq.mall.service;
 
 import com.wxq.mall.model.PmsProductAttribute;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import java.util.Map;
 import java.util.List;
 
 /**
@@ -11,15 +9,9 @@ import java.util.List;
  */
 public interface IPmsProductAttributeService {
 
-    void add(PmsProductAttribute pmsProductAttribute);
-
-    void update(PmsProductAttribute pmsProductAttribute);
-
     void delete(String id);
 
-    PmsProductAttribute get(String id);
+    void save(String productId, List<PmsProductAttribute> pmsProductAttributes);
 
-    Page<PmsProductAttribute> findByPage(Map<String,Object> params, Integer page, Integer size);
-
-    List<PmsProductAttribute> findAll();
+    List<PmsProductAttribute> findAttrsByProductId(String productId);
 }
