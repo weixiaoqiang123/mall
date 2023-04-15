@@ -23,9 +23,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if(log.isDebugEnabled()) {
-            log.info("uri: {}", request.getRequestURI());
-        }
+        log.info("uri: {}", request.getRequestURI());
 
         String token = request.getHeader(Constants.TOKEN_HEADER);
         boolean pass = true;
