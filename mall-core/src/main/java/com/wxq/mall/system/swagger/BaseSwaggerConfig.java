@@ -3,6 +3,7 @@ package com.wxq.mall.system.swagger;
 import com.google.common.base.Predicates;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -24,6 +25,7 @@ import java.util.List;
 public abstract class BaseSwaggerConfig {
 
     @Bean
+    // @Profile({"dev","test"})
     public Docket docket(Environment environment) {
         // 生成环境禁用文档
         // 设置要显示swagger的环境
