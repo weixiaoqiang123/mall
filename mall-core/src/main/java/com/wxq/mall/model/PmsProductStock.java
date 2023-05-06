@@ -1,6 +1,7 @@
 package com.wxq.mall.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -30,8 +31,12 @@ public class PmsProductStock implements Serializable {
     private String productId;
 
     @ApiModelProperty("商品库存编码")
-    @TableField("sku_code")
+    @TableId("sku_code")
     private String skuCode;
+
+    @ApiModelProperty("库存")
+    @TableField("stock_num")
+    private Integer stockNum;
 
     @ApiModelProperty("原价")
     @TableField("price")
@@ -101,17 +106,25 @@ public class PmsProductStock implements Serializable {
         this.saleNum = saleNum;
     }
 
+    public void setStockNum(Integer stockNum) {
+        this.stockNum = stockNum;
+    }
+
+    public Integer getStockNum() {
+        return stockNum;
+    }
 
     @Override
     public String toString() {
         return "PmsProductStock{" +
-            "id=" + id +
-            ", image=" + image +
-            ", productId=" + productId +
-            ", skuCode=" + skuCode +
-            ", price=" + price +
-            ", promotionPrice=" + promotionPrice +
-            ", saleNum=" + saleNum +
-        "}";
+                "id=" + id +
+                ", image='" + image + '\'' +
+                ", productId='" + productId + '\'' +
+                ", skuCode='" + skuCode + '\'' +
+                ", stockNum=" + stockNum +
+                ", price=" + price +
+                ", promotionPrice=" + promotionPrice +
+                ", saleNum=" + saleNum +
+                '}';
     }
 }

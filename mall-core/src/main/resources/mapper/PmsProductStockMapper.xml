@@ -23,4 +23,14 @@
         select id,image,product_id,sku_code,price,promotion_price,sale_num
         from pms_product_stock
     </select>
+
+    <select id="findStockAttrsBySkuCode" parameterType="string" resultType="com.wxq.mall.model.PmsStockAttributeValue">
+        select a.sku_code,b.attr_name,c.value_name
+        from pms_stock_attribute_value a
+        inner join pms_product_attribute b
+        on a.attr_id = b.attr_id
+        inner join pms_product_attibute_value c
+        on a.attr_id = c.attr_id and a.value_id = c.id
+        where sku_code = #{skuCode}
+    </select>
 </mapper>
