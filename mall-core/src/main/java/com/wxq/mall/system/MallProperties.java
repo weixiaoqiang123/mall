@@ -36,4 +36,6 @@ public class MallProperties {
     }
 
     private List<String> excludeLoginPath = new ArrayList<>();
+
+    private RabbitMqProperties rabbitmq;
 }

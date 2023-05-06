@@ -2,3 +2,10 @@ mall:
   exclude-login-path:
     - /login-admin
     - /loign-member
+#    - /payment/**
+
+  rabbitmq:
+    host: 192.168.124.31
+    port: 5672
+    username: admin
+    password: admin
