@@ -107,14 +107,16 @@ CREATE TABLE pms_product(
 
 DROP TABLE IF EXISTS pms_product_stock;
 CREATE TABLE pms_product_stock(
-    `id` INT    COMMENT '主键' ,
-    `image` VARCHAR(100)    COMMENT '库存图片' ,
-    `product_id` VARCHAR(32)    COMMENT '商品ID' ,
-    `sku_code` VARCHAR(32)    COMMENT '商品库存编码' ,
-    `price` DECIMAL(8,2)    COMMENT '原价' ,
-    `promotion_price` DECIMAL(8,2)    COMMENT '促销价格' ,
-    `sale_num` INT    COMMENT '销售数量' 
+  `id` INT    COMMENT '主键' ,
+  `image` VARCHAR(100)    COMMENT '库存图片' ,
+  `product_id` VARCHAR(32)    COMMENT '商品ID' ,
+  `sku_code` VARCHAR(32)    COMMENT '商品库存编码' ,
+  `price` DECIMAL(8,2)    COMMENT '原价' ,
+  `promotion_price` DECIMAL(8,2)    COMMENT '促销价格' ,
+  `sale_num` INT    COMMENT '销售数量' ,
+  `stock_num` INT    COMMENT '库存'
 )  COMMENT = '商品库存表';
+
 
 DROP TABLE IF EXISTS pms_product_images;
 CREATE TABLE pms_product_images(
@@ -145,10 +147,21 @@ DROP TABLE IF EXISTS pms_product_attribute_value;
 CREATE TABLE pms_product_attribute_value(
     `id` INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
     `product_id` VARCHAR(32)    COMMENT '商品编码' ,
-    `attribute_id` VARCHAR(8)    COMMENT '属性ID' ,
-    `attr_value_name` VARCHAR(50)    COMMENT '属性值' ,
+    `attr_id` VARCHAR(8)    COMMENT '属性ID' ,
+    `value_name` VARCHAR(50)    COMMENT '属性值' ,
     PRIMARY KEY (id)
 )  COMMENT = '商品属性值表';
+
+
+DROP TABLE IF EXISTS pms_stock_attribute_value;
+CREATE TABLE pms_stock_attribute_value(
+  `id` INT NOT NULL AUTO_INCREMENT  COMMENT '' ,
+  `sku_code` VARCHAR(32)    COMMENT '' ,
+  `attr_id` VARCHAR(8)    COMMENT '' ,
+  `value_id` VARCHAR(8)    COMMENT '' ,
+  PRIMARY KEY (id)
+)  COMMENT = '商品库存属性值表';
+
 
 DROP TABLE IF EXISTS pms_banner;
 CREATE TABLE pms_banner(
@@ -186,8 +199,8 @@ CREATE TABLE oms_order(
     `total_amount` DECIMAL(8,2)    COMMENT '订单总金额' ,
     `pay_amount` DECIMAL(8,2)    COMMENT '实际支付金额' ,
     `pay_type` INT    COMMENT '支付类型: 0 未支付 1 支付宝 2 微信' ,
-    `souce_type` INT    COMMENT '订单来源: 1 pc 2手机' ,
-    `stauts` INT    COMMENT '订单状态: 0 未付款 1 待发货 2 已发货 3 已收货' ,
+    `source_type` INT    COMMENT '订单来源: 1 pc 2手机' ,
+    `status` INT    COMMENT '订单状态: 0 未付款 1 待发货 2 已发货 3 已收货' ,
     `order_type` INT    COMMENT '订单类型: 0 正常订单 1 秒杀订单' ,
     `confirm_status` INT    COMMENT '收货状态: 0 未确认 1 已确认' ,
     `create_time` DATE    COMMENT '订单创建时间' ,
