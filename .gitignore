@@ -25,5 +25,7 @@
 .DS_Store
 
 */target
-hu# 忽略代码生成文件夹
+# 忽略代码生成文件夹
 code
+# 忽略本地配置文件夹
+local
