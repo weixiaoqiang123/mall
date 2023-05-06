@@ -1,5 +1,6 @@
 package com.wxq.mall.service;
 
+import com.wxq.mall.dto.OrderPreInfo;
 import com.wxq.mall.model.OmsOrder;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.Map;
@@ -22,4 +23,6 @@ public interface IOmsOrderService {
     Page<OmsOrder> findByPage(Map<String,Object> params, Integer page, Integer size);
 
     List<OmsOrder> findAll();
+
+    OmsOrder createOrder(OrderPreInfo orderPreInfo);
 }

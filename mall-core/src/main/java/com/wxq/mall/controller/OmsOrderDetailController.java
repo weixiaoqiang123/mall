@@ -16,6 +16,7 @@ import com.wxq.common.model.ResultBody;
  */
 @Controller
 @RequestMapping("/oms-order-detail")
+@Deprecated
 public class OmsOrderDetailController {
 
     @Resource
